@@ -41,8 +41,5 @@ Bước 2:
 
 2. -> merge code(Merge Branch): Phải commit code lên onl trước rồi mới có thể sử dụng được.  Bấm dấu ... => "Branch" => Chọn merge => Chọn nhánh có code mới nhất mà mình muốn xử lý conflict => xử lý bằng cách accept current || Accept Icoming || Accept Both.   
 
-NOTE: Cả 2 cách này chỉ có thể sử dụng khi làm bước 1 tức là dev đã có code mới nhất.
-
-REBASE và MERGE khác nhau điểm nào: Và khi nào thì dùng REBASE khi nào thì dùng MERGE.
 
 AAAABBBBCCCCDDDDD
