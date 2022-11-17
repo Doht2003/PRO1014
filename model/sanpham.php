@@ -1,14 +1,14 @@
 <?php
-function showsp($kyw, $cate_id)
+function showsp($kyw, $ma_loai)
 {
     include '../controller/controller.php';
 
-    $sql = "SELECT ma_sp,quantity,product_name,price,img,img_2,img_3,img_4,description,ngaynhap,categories.cate_id,categories.cate_name FROM sanpham JOIN categories ON categories.cate_id = sanpham.cate_id  ";
+    $sql = "SELECT ma_sp,quantity,product_name,price,img,img_2,img_3,img_4,description,ngaynhap,categories.ma_loai,categories.cate_name FROM sanpham JOIN categories ON categories.ma_loai = sanpham.ma_loai  ";
     if ($kyw != "") {
         $sql .= " and product_name like '%" . $kyw . "%'";
     }
-    if ($cate_id > 0) {
-        $sql .= " and sanpham.cate_id = '$cate_id'";
+    if ($ma_loai > 0) {
+        $sql .= " and sanpham.ma_loai = '$ma_loai'";
     }
     $sql .= " order by ma_sp desc";
     $stmt = $conn->prepare($sql);
@@ -16,10 +16,10 @@ function showsp($kyw, $cate_id)
     $sanpham = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $sanpham;
 }
-function showsp_theodm($cate_id)
+function showsp_theodm($ma_loai)
 {
     include './controller/controller.php';
-    $sql = "SELECT * from sanpham  where cate_id = '$cate_id'  ";
+    $sql = "SELECT * from sanpham  where loai_sp = '$ma_loai'  ";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $sanpham = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -45,11 +45,11 @@ function show_top10_sp()
     $sanpham = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $sanpham;
 }
-function view($id)
+function luot_xem($id)
 {
     include './controller/controller.php';
 
-    $sql = " UPDATE sanpham SET view = view + 1 where  ma_sp = '$id'";
+    $sql = " UPDATE sanpham SET luot_xem = luot_xem + 1 where  ma_sp = '$id'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 }
@@ -57,11 +57,11 @@ function chitiet_sp($id)
 {
     include './controller/controller.php';
 
-    $sql = "SELECT * FROM sanpham where  ma_sp = '$id'";
+    $sql = "SELECT * FROM sanpham where ma_sp = '$id'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    $product = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $product;
+    $sanpham = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $sanpham;
 }
 function addsp($product_name, $price, $description, $quantity, $file, $file2, $file3, $file4, $cate_id)
 {   

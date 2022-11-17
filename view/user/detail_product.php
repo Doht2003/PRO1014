@@ -2,10 +2,10 @@
     <script>
         var i = 0;
         var mang = [];
-        mang[0] = "/duanmau/view/img/<?= $product['img'] ?>"
-        mang[1] = "/duanmau/view/img/<?= $product['img_2'] ?>"
-        mang[2] = "/duanmau/view/img/<?= $product['img_3'] ?>"
-        mang[3] = "/duanmau/view/img/<?= $product['img_4'] ?>"
+        mang[0] = "/duanmau/view/img/<?= $sanpham['hinh_anh'] ?>"
+        mang[1] = "/duanmau/view/img/<?= $sanpham['hinh_anh_2'] ?>"
+        mang[2] = "/duanmau/view/img/<?= $sanpham['hinh_anh_3'] ?>"
+        mang[3] = "/duanmau/view/img/<?= $sanpham['hinh_anh_4'] ?>"
 
         var hop = document.getElementsByClassName("anhphu");
 
@@ -23,7 +23,7 @@
             time = setTimeout(show, 2000)
 
         }
-        <?php if (!empty($product['img_4']) && !empty($product['img_3']) && !empty($product['img_2'])) : ?>
+        <?php if (!empty($product['hinh_anh_4']) && !empty($product['hinh_anh_3']) && !empty($product['hinh_anh_2'])) : ?>
             window.onload = function() {
                 time = setTimeout(show, 2000)
             }
@@ -41,34 +41,34 @@
 
 
         function tru() {
-            document.getElementById("soluong").value--;
-            if (document.getElementById("soluong").value <= 0) {
+            document.getElementById("so_luong").value--;
+            if (document.getElementById("so_luong").value <= 0) {
                 alert("Số lượng phải lớn hơn 0");
-                document.getElementById("soluong").value = 1;
+                document.getElementById("so_luong").value = 1;
             }
 
         }
 
         function plus(quantity) {
-            if(document.getElementById("soluong").value < quantity){
-                document.getElementById("soluong").value++;
+            if(document.getElementById("so_luong").value < quantity){
+                document.getElementById("so_luong").value++;
             }
             else{
                 alert("Số lượng sản phẩm không đủ với nhu cầu của bạn");
             }
-            if (document.getElementById("soluong").value <= 0) {
+            if (document.getElementById("so_luong").value <= 0) {
                 alert("Số lượng phải lớn hơn 0");
-                document.getElementById("soluon").value = 1;
+                document.getElementById("so_luong").value = 1;
             }
         }
         function checksoluong(quantity){
-            if (document.getElementById("soluong").value <= 0) {
+            if (document.getElementById("so_luong").value <= 0) {
                 alert("Số lượng phải lớn hơn 0");
-                document.getElementById("soluong").value = 1;
+                document.getElementById("so_luong").value = 1;
             }
-            else if(document.getElementById("soluong").value > quantity){
+            else if(document.getElementById("so_luong").value > quantity){
                 alert("Số lượng sản phẩm không đủ với nhu cầu của bạn");
-                document.getElementById("soluong").value = quantity;
+                document.getElementById("so_luong").value = quantity;
             }
         }
         function hien(i){
@@ -80,32 +80,32 @@
     </script>
     <h1>Chi tiết sản phẩm</h1>
     <div class="ctsp">
-    <?php if (!empty($product['img_4']) && !empty($product['img_3']) && !empty($product['img_2'])) : ?>
+    <?php if (!empty($product['hinh_anh_4']) && !empty($product['hinh_anh_3']) && !empty($product['hinh_anh_2'])) : ?>
         <div class="anhcon">
-            <img class="anhphu" onclick="chon(0)" src="/duanmau/view/img/<?= $product['img'] ?>" alt="">
+            <img class="anhphu" onclick="chon(0)" src="/duanmau/view/img/<?= $product['hinh_anh'] ?>" alt="">
 
-            <img class="anhphu" onclick="chon(1)" src="/duanmau/view/img/<?= $product['img_2'] ?>" alt="">
+            <img class="anhphu" onclick="chon(1)" src="/duanmau/view/img/<?= $product['hinh_anh_2'] ?>" alt="">
 
-            <img class="anhphu" onclick="chon(2)" src="/duanmau/view/img/<?= $product['img_3'] ?>" alt="">
+            <img class="anhphu" onclick="chon(2)" src="/duanmau/view/img/<?= $product['hinh_anh_3'] ?>" alt="">
 
-            <img class="anhphu" onclick="chon(3)" src="/duanmau/view/img/<?= $product['img_4'] ?>" alt="">
+            <img class="anhphu" onclick="chon(3)" src="/duanmau/view/img/<?= $product['hinh_anh_4'] ?>" alt="">
         </div>
             <?php endif ?>
         
         <div class="anhlon">
-            <?php if (!empty($product['img_4']) && !empty($product['img_3']) && !empty($product['img_2'])) : ?>
-                <img id="anh2" onclick="show()" src="./view/img/<?= $product['img'] ?>" alt="">
+            <?php if (!empty($product['hinh_anh_4']) && !empty($product['hinh_anh_3']) && !empty($product['hinh_anh_2'])) : ?>
+                <img id="anh2" onclick="show()" src="./view/img/<?= $product['hinh_anh'] ?>" alt="">
             <?php endif ?>
-            <?php if (empty($product['img_4']) && empty($product['img_3']) && empty($product['img_2'])) : ?>
-                <img id="anh2" src="./view/img/<?= $product['img'] ?>" alt="">
+            <?php if (empty($product['hinh_anh_4']) && empty($product['hinh_anh_3']) && empty($product['hinh_anh_2'])) : ?>
+                <img id="anh2" src="./view/img/<?= $product['hinh_anh'] ?>" alt="">
             <?php endif ?>
         </div>
         <div class="tt">
 
             <div class="tt_tensp">
-                <h3><?= $product['product_name'] ?></h3>
+                <h3><?= $sanpham['ten_sp'] ?></h3>
             </div>
-            <div class="tt_gia"><?= format_currency($product['price']) . "  VNĐ"  ?></div>
+            <div class="tt_gia"><?= format_currency($product['gia_sp']) . "  VNĐ"  ?></div>
           
             <div class="mota"> <?= $product['description'] ?></div>
                 <?php if(isset($_SESSION['user'])){?>

@@ -1,4 +1,4 @@
-<div class="nen">
+<!-- <div class="nen">
     
     <div class="listchung">
         <h1>Doanh thu </h1>
@@ -31,7 +31,7 @@
            </tbody>
         </table>
     </div>
-</div>
+</div> -->
 <div class="nen3">
     <div class="listchung">
         <h1>Thống kê danh mục</h1>
@@ -45,8 +45,8 @@
            <tbody>
            <?php foreach ($cate as $cate) : ?>
                 <tr>
-                    <td><?= $cate['cate_name'] ?></td>
-                    <td><?= $cate['soluong'] ?></td>
+                    <td><?= $cate['loai_sp'] ?></td>
+                    <td><?= $cate['so_luong'] ?></td>
                 </tr>
             <?php endforeach ?>
             <tr>
@@ -56,6 +56,7 @@
         </table>
     </div>
 </div>
+<?php die; ?>
 
 <div class="nen3">
 <div class="listchung">

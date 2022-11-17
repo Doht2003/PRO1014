@@ -26,11 +26,11 @@
                     </tr>
                     
                     <tr>                
-                        <td colspan="2" ><input name="password"  type="password"></td>
+                        <td colspan="2" ><input name="mat_khau"  type="password"></td>
                     </tr>
                     <tr>
-                        <td><?php if(isset($_SESSION['errors']['password'])):?>
-                                <?=$_SESSION['errors']['password']?>
+                        <td><?php if(isset($_SESSION['errors']['mat_khau'])):?>
+                                <?=$_SESSION['errors']['mat_khau']?>
                             <?php endif?>
                         </td>
                     </tr>
@@ -48,14 +48,14 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="ten_input">img</td>
+                        <td class="ten_input">avatar</td>
                     </tr>
                     <tr>
-                        <td colspan="2" id="signupimg"><input  type="file" name="img"></td>
+                        <td colspan="2" id="signupimg"><input  type="file" name="avt"></td>
                     </tr>
                     <tr>
-                        <td><?php if(isset($_SESSION['errors']['img'])):?>
-                                <?=$_SESSION['errors']['img']?>
+                        <td><?php if(isset($_SESSION['errors']['avt'])):?>
+                                <?=$_SESSION['errors']['avt']?>
                             <?php endif?>
                         </td>
                     </tr>
@@ -63,11 +63,11 @@
                         <td class="ten_input">Họ và tên</td>
                     </tr>
                     <tr>
-                        <td colspan="2" ><input name="hovaten" type="text"></td>
+                        <td colspan="2" ><input name="ho_ten" type="text"></td>
                     </tr>
                     <tr>
-                        <td><?php if(isset($_SESSION['errors']['hovaten'])):?>
-                                <?=$_SESSION['errors']['hovaten']?>
+                        <td><?php if(isset($_SESSION['errors']['ho_ten'])):?>
+                                <?=$_SESSION['errors']['ho_ten']?>
                             <?php endif?>
                         </td>
                     </tr>
@@ -87,11 +87,11 @@
                         <td class="ten_input">Địa chỉ</td>
                     </tr>
                     <tr>
-                        <td colspan="2" ><input name="address" type="text"></td>
+                        <td colspan="2" ><input name="dia_chi" type="text"></td>
                     </tr>
                     <tr>
-                        <td><?php if(isset($_SESSION['errors']['address'])):?>
-                                <?=$_SESSION['errors']['address']?>
+                        <td><?php if(isset($_SESSION['errors']['dia_chi'])):?>
+                                <?=$_SESSION['errors']['dia_chi']?>
                             <?php endif?>
                         </td>
                     </tr>

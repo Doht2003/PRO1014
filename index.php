@@ -139,19 +139,19 @@ if (isset($_GET['act'])) {
 
       if (isset($_POST['dangky'])) {
         $username = $_POST['username'];
-        $password = $_POST['password'];
+        $mat_khau = $_POST['mat_khau'];
         $repassword = $_POST['repassword'];
-        $hovaten = $_POST['hovaten'];
+        $ho_ten = $_POST['ho_ten'];
         $email = $_POST['email'];
         $sdt = $_POST['sdt'];
-        $address = $_POST['address'];
-        $file = $_FILES['img'];
-        dangky($username, $password, $repassword, $hovaten, $email, $address, $sdt, $file);
-        if (!isset($_SESSION['errors']['img']) && !isset($_SESSION['errors']['username']) && !isset($_SESSION['errors']['password']) && !isset($_SESSION['errors']['repassword']) && !isset($_SESSION['errors']['hovaten']) && !isset($_SESSION['errors']['email']) && !isset($_SESSION['errors']['address']) && !isset($_SESSION['errors']['sdt'])) {
+        $dia_chi = $_POST['dia_chi'];
+        $file = $_FILES['avt'];
+        dangky($username, $mat_khau, $repassword, $ho_ten, $email, $dia_chi, $sdt, $file);
+        if (!isset($_SESSION['errors']['avt']) && !isset($_SESSION['errors']['username']) && !isset($_SESSION['errors']['password']) && !isset($_SESSION['errors']['repassword']) && !isset($_SESSION['errors']['hovaten']) && !isset($_SESSION['errors']['email']) && !isset($_SESSION['errors']['dia_chi']) && !isset($_SESSION['errors']['sdt'])) {
           $_SESSION['dangkythanhcong'] = "Đăng ký thành công";
-          header("location: index.php?act=vao_trang_dangnhap");
+          header("location: ./index.php?act=vao_trang_dangnhap");
         } else {
-          header("location: index.php?act=vao_trang_dangky");
+          header("location: ./index.php?act=vao_trang_dangky");
         }
       }
 
@@ -309,7 +309,7 @@ if (isset($_GET['act'])) {
         $hovaten = trim($_POST['hovaten']);
         $tel = $_POST['tel'];
         $email = trim($_POST['email']);
-        $address = trim($_POST['address']);
+        $dia_chi = trim($_POST['address']);
         $id_user = $_SESSION['user']['user_id'];
         $tong = $_POST['tong'];
         dathang($id_user, $hovaten, $tel, $email, $address, $tong);
