@@ -1,0 +1,392 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #b7b1b1;
+}
+.container {
+    width: 100%;
+    height: auto;
+}
+.thongbaoloi{
+    color: red;
+}
+#myChart{
+    margin-left: 300px;
+}
+.listchung {
+    margin: 0 auto;
+    width: 90%;
+    background-color: white;
+    height: auto;
+    border-radius: 10px;
+    padding-bottom: 70px;
+}
+#binhluan_traloi{
+    width: auto;
+    padding: 0 10px;
+    background-color: blueviolet;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+}
+#ngay{
+    min-width: 100px ;
+}
+#doanhthu_diachi{
+    width: 80px;
+}
+#binhluan_traloi:hover{
+    box-shadow:  0 0 5px;
+}
+#binhluan_traloi a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    line-height: 30px;
+}
+.loisuauser{
+    color: red;
+}
+#chucnang {
+    width: 200px;
+    
+}
+header{
+    width: auto;
+    background-color: #e8e4e4;
+    padding-left: 50px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+    z-index: 10;
+  
+}
+.box img{
+    width: 190px;
+    margin-left: 20px;
+}
+header a{
+    text-decoration: none;
+    color: black;
+}
+.user{
+    padding-top: 20px;
+    height: 75px;
+}
+.box a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding-left: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.box ul{
+    width: 100%;
+    list-style: none;
+}
+
+.box{
+    position: fixed;
+    width: 240px;
+    height: 100%;
+    float: left;
+    background-color: #302e2e;
+}
+.box ul li a:hover{
+    background-color: white;
+    color: black;
+}
+.box i{
+    margin-right: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+table{
+    margin: auto;
+}
+footer{
+    height: 50px;
+    background-color: black;
+    color: white;
+    text-align: center;
+
+    width: 100%;
+}
+.list{
+    width: 100%;
+    border-collapse: collapse ;
+    z-index: 1;
+}
+.list tbody tr:nth-child(2n){
+
+    background-color: #f9fafe;
+}
+.list th{
+    padding: 10px;
+    background-color: #f0eef0;
+}
+#description{
+    padding-left: 10px ;
+    padding-right: 10px ;
+    width: 300px;
+    text-align: justify;
+}
+#tensp{
+    width: 200px;
+}
+#gia{
+    padding-left: 10px ;
+    padding-right: 10px ;
+}
+.list td{
+    width: auto;
+    text-align: center;
+    padding: 10px 0px;
+}
+.ngay{
+  
+    width: 100px;
+}
+.anhuser{
+    width: 70px;
+    height:70px;
+    border-radius: 100px;
+}
+.nen{
+    padding-top: 50px;
+    width: auto;
+    height: auto;
+    margin-left: 230px;
+    background-color: #b7b1b1;
+    display: flex;
+    padding-bottom: 50px;
+    z-index: 1;
+}
+.nen3{
+    width: auto;
+    height: auto;
+    margin-left: 230px;
+    background-color: #b7b1b1;
+    display: flex;
+    padding-bottom: 50px;
+    z-index: 1;
+}
+.nen2{
+    padding-top: 50px;
+    width: 65%;
+    height: auto;
+    display: flex;
+    margin: auto;
+}
+.donhang #sua{
+    display: none;
+}
+.tb{
+    width: 90%;
+    height: 800px;
+    background-color: white;
+}
+.bao{
+    width: auto;
+}
+#xoa{
+    width: 70px;
+    height: 30px;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+}
+#ngaythang{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#xoa a{
+    line-height: 30px;
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+#xoa:hover{
+    box-shadow: 0 0 5px;
+}
+.nutcn{
+    display: flex;
+}
+
+#sua{
+    margin-right: 20px;
+    width: 70px;
+    height: 30px;
+    background-color: blueviolet;
+    border: none;
+    border-radius: 5px;
+}
+#sua a{
+    width: 100%;
+    display: block;
+    height: 100%;
+    line-height: 30px;
+    color: white;
+    text-decoration: none;
+}
+#sua:hover{
+    box-shadow: 0 0 5px;
+}
+#them{
+    width: 80px;
+    height: 40px;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+}
+#them a{
+    display: block;
+    height: 100%;
+    line-height: 40px;
+    color: white;
+    text-decoration: none;
+}
+#them:hover{
+    box-shadow: 0 0 5px;
+}
+.add{
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 60%;
+    height: auto;
+    padding-top: 20px;
+    background-color: white;
+    padding-bottom: 50px;
+}
+.edit{
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 60%;
+    height: auto;
+    padding-top: 20px;
+    background-color: white;
+    padding-bottom: 50px;
+}
+.form input{
+    width: 400px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+.btn_donhang{
+    cursor: pointer;
+    display: none;
+    margin-right: 20px;
+    width: 70px;
+    height: 30px;
+    background-color: blueviolet;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin-left: 10px;
+}
+.btn_donhang:hover{
+    box-shadow:  0 0 5px;
+}
+.form td{
+    padding: 7px 0;
+}
+.form button{
+    width: 400px;
+    height: 30px;
+    color: white;
+    background-color: blueviolet;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.search{
+    padding-right: 22px;
+    float: right;
+    margin-bottom: 20px;
+}
+.loi{
+    color: red;
+}
+.trong{
+    width: 400px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+#vaitro{
+    width: 50px;
+    height: 15px;
+}
+.phai{
+    display: flex;
+}
+.tenuser{
+    display: flex;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+
+}
+.user{
+    list-style: none;
+    position: relative;
+}
+
+.user img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+#muiten{
+    margin-left: 5px;
+    font-size: 20px;
+    margin-top: 5px;
+    transition: 0.2s ease-in-out;
+}
+.an:hover #muiten{
+    transform: rotate(90deg);
+}
+.chao{
+    margin-top: 10px;
+}
+ul li>ul{
+    right: 50px;
+    top: 70px;
+    position: fixed;
+    width: 250px;
+    height: auto;
+    list-style: none;
+    display: none;
+    border-top: 1px solid #0FAFE9;
+}
+ul li>ul a{
+    background-color: white;
+    height: 30px;
+    display: block;
+    text-decoration: none;
+    border-bottom: 1px solid #0FAFE9;
+    border-right: 1px solid #0FAFE9;
+    border-left: 1px solid #0FAFE9;
+    line-height: 30px;
+    padding-left: 20px;
+}
+ul li>ul a:hover{
+    background-color: #0FAFE9;
+    color: white;
+}
+.an:hover >ul{
+    display: block;
+    animation: anima ease-in-out 0.5s;
+
+}

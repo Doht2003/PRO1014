@@ -1,0 +1,123 @@
+@media (max-width: 1023px){
+    .bars_nav{
+        display: block;
+    }
+    .trai{
+        display: none;
+    }
+    .phai{
+        display: none;
+    }
+    .nav_input:checked ~ .nav_overlay{
+        display: block;
+    }
+    .nav_input:checked ~ .nav_mobile{
+        display: block;
+        transform: translateX(0%);
+        opacity: 1;
+
+    }
+    .banner2{
+        display: none;
+    }
+
+
+    /* Sản phẩm */
+    .product{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .contact_img{
+        /* display: grid; */
+        grid-template-columns: repeat(2,1fr);
+        /* margin: 0 auto; */
+        padding: 60px;
+        gap: 0 50px ;
+        margin: 0 60px;
+    }
+    .insta_icon{
+        position: absolute;
+        left: 80px;
+        top: 80px;
+        visibility: hidden;
+        transition: 0.2s;
+    }
+    
+
+
+
+    .wrapper h1 {
+        margin: 20px;
+        font-size: 50px;
+    }
+    #error_message{
+        height: 80px;
+        padding: 20px;
+        font-size: 50px;
+    }
+    .wrapper form .top_input{
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .wrapper form .top_input h3{
+        font-size: 35px;
+        margin: 15px 0;
+    }
+    .wrapper form .top_input input{
+        font-size: 35px;
+        margin: 15px 0;      
+    }
+    .wrapper form .bottom_input h3{
+        font-size: 35px;
+
+    }
+    .wrapper form .bottom_input textarea{
+        font-size: 35px;
+    }
+    .wrapper form .bottom_input .btn input{
+        font-size: 35px;
+    }
+
+
+}
+
+@media (max-width: 1400px){
+    .product{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    .img_insta .anh{
+        width: 200px;
+        /* height: 80%; */
+        height: 200px;
+    
+    }
+    .img_insta::after{
+        content: " ";
+        position: absolute;
+        /* width: 100%; */
+        width: 200px;
+        top:0;
+        left:0;
+        height: 200px;
+        background-color:rgba(0, 0, 0,0);
+        transition: .25s;
+        z-index: 1;
+    }
+    .contact_img{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        margin: 0 auto;
+        padding: 60px;
+        gap: 0 50px ;
+        margin: 0 60px;
+    }
+    .insta_icon{
+        position: absolute;
+        left: 80px;
+        top: 80px;
+        visibility: hidden;
+        transition: 0.2s;
+    }
+}
+
