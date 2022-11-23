@@ -1,29 +1,29 @@
 <?php
-function showsp($kyw, $ma_loai)
+function showsp($kyw, $loai_sp)
 {
     include '../controller/controller.php';
 
-    $sql = "SELECT ma_sp,quantity,product_name,price,img,img_2,img_3,img_4,description,ngaynhap,categories.ma_loai,categories.cate_name FROM sanpham JOIN categories ON categories.ma_loai = sanpham.ma_loai  ";
+    $sql = "SELECT ma_sp,ten_sp,gia_sp,hinh_anh,hinh_anh_2,hinh_anh_3,hinh_anh_4,mo_ta,so_luong,ngay_nhap,loai_sp.ma_loai,loai_sp.ten_loai FROM sanpham JOIN loai_sp ON loai_sp.ma_loai = sanpham.loai_sp  ";
     if ($kyw != "") {
-        $sql .= " and product_name like '%" . $kyw . "%'";
+        $sql .= " and ten_sp like '%" . $kyw . "%'";
     }
-    if ($ma_loai > 0) {
-        $sql .= " and sanpham.ma_loai = '$ma_loai'";
+    if ($loai_sp > 0) {
+        $sql .= " and sanpham.loai_sp = '$loai_sp'";
     }
     $sql .= " order by ma_sp desc";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    $sanpham = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $sanpham;
+    $product = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $product;
 }
-function showsp_theodm($ma_loai)
+function showsp_theodm($loai_sp)
 {
     include './controller/controller.php';
-    $sql = "SELECT * from sanpham  where loai_sp = '$ma_loai'  ";
+    $sql = "SELECT * from sanpham  where loai_sp = '$loai_sp'  ";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    $sanpham = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $sanpham;
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $products;
 }
 function showsp_trangchu()
 {
@@ -32,8 +32,8 @@ function showsp_trangchu()
     $sql = "SELECT * FROM sanpham where 1 order by ma_sp desc limit 0,9";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    $sanpham = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $sanpham;
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $products;
 }
 function show_top10_sp()
 {
@@ -42,10 +42,10 @@ function show_top10_sp()
     $sql = "SELECT * FROM sanpham where 1 order by luot_xem desc limit 0,9";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    $sanpham = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $sanpham;
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $products;
 }
-function luot_xem($id)
+function view($id)
 {
     include './controller/controller.php';
 
@@ -60,8 +60,8 @@ function chitiet_sp($id)
     $sql = "SELECT * FROM sanpham where ma_sp = '$id'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    $sanpham = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $sanpham;
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $product;
 }
 function addsp($product_name, $price, $description, $quantity, $file, $file2, $file3, $file4, $cate_id)
 {   
@@ -123,7 +123,7 @@ function addsp($product_name, $price, $description, $quantity, $file, $file2, $f
     }
     $_SESSION['error_product'] = $error;
     if (!$error) {
-        $sql = "INSERT INTO sanpham(product_name,price,img,img_2,img_3,img_4,description,quantity,cate_id) VALUES ('$product_name','$price','$img','$img2','$img3','$img4','$description',$quantity,' $cate_id')";
+        $sql = "INSERT INTO sanpham(ten_sp,gia_sp,mo_ta,hinh_anh,hinh_anh_2,hinh_anh_3,hinh_anh_4,so_luong,loai_sp) VALUES ('$product_name','$price','$img','$img2','$img3','$img4','$description',$quantity,' $cate_id')";
         // chuẩn bị
         $stmt = $conn->prepare($sql);
         //Thực thi
@@ -137,11 +137,11 @@ function addsp($product_name, $price, $description, $quantity, $file, $file2, $f
 function deletesp($id)
 {
     include '../controller/controller.php';
-    $sql = "DELETE FROM rep WHERE ma_sp = '$id' ";
+    $sql = "DELETE FROM rep_bl WHERE ma_sp = '$id' ";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     if ($sql) {
-        $sql = "DELETE FROM binhluan WHERE ma_sp = '$id' ";
+        $sql = "DELETE FROM binhluan WHERE san_pham = '$id' ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         if ($sql) {
@@ -218,7 +218,7 @@ function updatesp($ma_sp, $product_name, $price, $file, $file2, $file3, $file4, 
     }
     $_SESSION['error_product'] = $error;
     if (!$error) {
-        $sql = "UPDATE  sanpham SET ma_sp = '$ma_sp' , product_name = '$product_name' ,price = '$price',img = '$img',img_2 = '$img2',img_3 = '$img3',img_4 = '$img4',description = '$description',quantity = '$quantity' ,cate_id = ' $cate_id'  WHERE ma_sp = '$ma_sp'";
+        $sql = "UPDATE  sanpham SET ma_sp = '$ma_sp' , ten_sp = '$product_name' ,gia_sp = '$price',hinh_anh = '$img',hinh_anh_2 = '$img2',hinh_anh_3 = '$img3',hinh_anh_4 = '$img4',mo_ta = '$description',so_luong = '$quantity' ,loai_sp = ' $cate_id'  WHERE ma_sp = '$ma_sp'";
         // chuẩn bị
         $stmt = $conn->prepare($sql);
         //Thực thi
@@ -232,24 +232,24 @@ function updatesp($ma_sp, $product_name, $price, $file, $file2, $file3, $file4, 
 function sanpham_lienquan($id, $iddm)
 {
     include './controller/controller.php';
-    $sql = " SELECT * FROM sanpham WHERE cate_id = '$iddm' AND ma_sp != '$id' order by RAND() limit 4";
+    $sql = " SELECT * FROM sanpham WHERE loai_sp = '$iddm' AND ma_sp != '$id' order by RAND() limit 4";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    $sanpham_lienquan = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $sanpham_lienquan;
+    $products_lienquan = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $products_lienquan;
 }
 function timsp($kyw)
 {
     include './controller/controller.php';
-    $sql = " SELECT * FROM sanpham WHERE product_name like '%" . $kyw . "%'  order by ma_sp desc   ";
+    $sql = " SELECT * FROM sanpham WHERE ten_sp like '%" . $kyw . "%'  order by ma_sp desc   ";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    $sanpham = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $sanpham;
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $products;
 }
 function sanpham_xemnhieunhat(){
     include '../controller/controller.php';
-    $sql = " SELECT * FROM sanpham order by view desc limit 3   ";
+    $sql = " SELECT * FROM sanpham order by luot_xem desc limit 3   ";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $product_top1_view = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -258,7 +258,7 @@ function sanpham_xemnhieunhat(){
 function sanphamdcbinhluannhieu(){
     
     include '../controller/controller.php';
-    $sql = " SELECT * , COUNT(binhluan.ma_sp) as 'sobinhluan' FROM sanpham JOIN binhluan ON binhluan.ma_sp= sanpham.ma_sp GROUP BY sanpham.product_name order by sobinhluan  DESC LIMIT 5 ";
+    $sql = " SELECT * , COUNT(binhluan.san_pham) as 'sobinhluan' FROM sanpham JOIN binhluan ON binhluan.san_pham= sanpham.ma_sp GROUP BY sanpham.ten_sp order by sobinhluan  DESC LIMIT 5 ";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $psanphamdcbinhluannhieu = $stmt->fetchAll(PDO::FETCH_ASSOC);

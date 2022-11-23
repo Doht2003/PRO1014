@@ -1,4 +1,4 @@
-<!-- <div class="nen">
+<div class="nen">
     
     <div class="listchung">
         <h1>Doanh thu </h1>
@@ -31,7 +31,7 @@
            </tbody>
         </table>
     </div>
-</div> -->
+</div>
 <div class="nen3">
     <div class="listchung">
         <h1>Thống kê danh mục</h1>
@@ -45,7 +45,7 @@
            <tbody>
            <?php foreach ($cate as $cate) : ?>
                 <tr>
-                    <td><?= $cate['loai_sp'] ?></td>
+                    <td><?= $cate['ten_loai'] ?></td>
                     <td><?= $cate['so_luong'] ?></td>
                 </tr>
             <?php endforeach ?>
@@ -56,7 +56,7 @@
         </table>
     </div>
 </div>
-<?php die; ?>
+
 
 <div class="nen3">
 <div class="listchung">
@@ -74,11 +74,11 @@
            <tbody>
            <?php foreach ($sanpham_top1_view as $value) : ?>
                 <tr>
-                    <td><?= $value['product_id'] ?></td>
-                    <td><?= $value['product_name'] ?></td>
-                    <td><img src="../view/img/<?= $value['img'] ?>" height="100px" alt=""></td>
-                    <td><?= format_currency($value['price']) . " VNĐ" ?></td>
-                    <td><strong><?= $value['view'] ?></strong></td>
+                    <td><?= $value['ma_sp'] ?></td>
+                    <td><?= $value['ten_sp'] ?></td>
+                    <td><img src="../view/img/<?= $value['hinh_anh'] ?>" height="100px" alt=""></td>
+                    <td><?= format_currency($value['gia_sp']) . " VNĐ" ?></td>
+                    <td><strong><?= $value['luot_xem'] ?></strong></td>
                 </tr>
             <?php endforeach ?>
            </tbody>
@@ -101,10 +101,10 @@
            <tbody>
            <?php foreach ($khachvip as $value) : ?>
                 <tr>
-                    <td><?= $value['user_id'] ?></td>
-                    <td><?= $value['hovaten'] ?></td>
-                    <td><img src="../view/img/<?= $value['img'] ?>" height="100px" alt=""></td>
-                    <td><?= $value['address'] ?></td>
+                    <td><?= $value['ma_tk'] ?></td>
+                    <td><?= $value['ho_ten'] ?></td>
+                    <td><img src="../view/img/<?= $value['avt'] ?>" height="100px" alt=""></td>
+                    <td><?= $value['dia_chi'] ?></td>
                     <td><strong><?= $value['solanmua'] ?></strong></td>
                 </tr>
             <?php endforeach ?>
@@ -128,10 +128,10 @@
            <tbody>
            <?php foreach ($sp_binhluannhieu as $value) : ?>
                 <tr>
-                    <td><?= $value['product_id'] ?></td>
-                    <td><?= $value['product_name'] ?></td>
-                    <td><img src="../view/img/<?= $value['img'] ?>" height="100px" alt=""></td>
-                    <td><?= format_currency($value['price']) . " VNĐ" ?></td>
+                    <td><?= $value['ma_sp'] ?></td>
+                    <td><?= $value['ten_sp'] ?></td>
+                    <td><img src="../view/img/<?= $value['hinh_anh'] ?>" height="100px" alt=""></td>
+                    <td><?= format_currency($value['gia_sp']) . " VNĐ" ?></td>
                     <td><strong><?= $value['sobinhluan'] ?></strong></td>
                 </tr>
             <?php endforeach ?>

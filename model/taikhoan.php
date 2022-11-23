@@ -92,7 +92,7 @@
                 $errors['sdt'] = "Số điện thoại đã tồn tại";
             }
         }
-        $sdt = '/0\d{9,10}/';
+        $sdt = '/^[0-9]*$/';
         if(!preg_match($sdt,$sdt)){
             $errors['sdt'] = "Số điện thoại không đúng định dạng";
         }
@@ -106,7 +106,7 @@
         
     }
     function quenmatkhau($email,$username){
-        include './ketnoi/ketnoi.php';
+        include './controller/controller.php';
         $errors = [];
         if($username == ""){
             $errors['username'] = "Bạn chưa nhập tên đăng nhập";
@@ -125,8 +125,8 @@
             $account = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach($account as $check){
                 if($email == $check['email'] && $username == $check['username']){
-                    $_SESSION['thongbao']  = $check['password'];
-                     break;
+                    $_SESSION['thongbao']  = $check['mat_khau'];
+                    break;
                 }
                 else{
                     $_SESSION['thongbao'] = "Email hoặc Tên đăng nhập không tồn tại";
@@ -136,45 +136,45 @@
        
     }
     function show_user(){
-        include '../ketnoi/ketnoi.php';
-        $sql = "SELECT user_id,password,email,ho_ten,sdt,img,dia_chi, username,vaitro.vai_tro, vaitro.vaitro FROM taikhoan JOIN vaitro ON vaitro.vai_tro=taikhoan.vai_tro  ";
+        include '../controller/controller.php';
+        $sql = "SELECT ma_tk,mat_khau,email,ho_ten,sdt,avt,dia_chi,username,vai_tro.ma_vt,vai_tro.ten_vt FROM taikhoan JOIN vai_tro ON vai_tro.ma_vt=taikhoan.vai_tro  ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $users;
     }
     function delete_user($user_id){
-        include '../ketnoi/ketnoi.php';
-        $sql = "SELECT taikhoan.user_id, binhluan.binhluan_id FROM taikhoan JOIN binhluan ON binhluan.user_id = taikhoan.user_id WHERE taikhoan.user_id = '1'";
+        include '../controller/controller.php';
+        $sql = "SELECT taikhoan.ma_tl, binhluan.ma_bl FROM taikhoan JOIN binhluan ON binhluan.ma_tk = taikhoan.ma_tk WHERE taikhoan.ma_tk = '1'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $list = $stmt -> fetchAll(PDO::FETCH_ASSOC);
         foreach($list as $bl_id ){
-            $id = $bl_id['binhluan_id'];
-            $sql = "DELETE FROM feedback  WHERE binhluan_id = '$id'";
+            $id = $bl_id['ma_bl'];
+            $sql = "DELETE FROM feedback  WHERE ma_bl = '$id'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
         }
-        $sql = "DELETE FROM binhluan  WHERE user_id = '$user_id'";
+        $sql = "DELETE FROM binhluan  WHERE ma_kt = '$user_id'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
-        $sql = "DELETE FROM feedback  WHERE user_id = '$user_id'";
+        $sql = "DELETE FROM feedback  WHERE ma_kt = '$user_id'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
-        $sql = "DELETE FROM cart  WHERE user_id = '$user_id'";
+        $sql = "DELETE FROM cart  WHERE ma_kt = '$user_id'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
        
 
-        $sql = "DELETE FROM taikhoan  WHERE user_id = '$user_id'";
+        $sql = "DELETE FROM taikhoan  WHERE ma_kt = '$user_id'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }
     function edit_user($user_id){
-        include '../ketnoi/ketnoi.php';
-        $sql = "SELECT * FROM taikhoan WHERE user_id='$user_id'";
+        include '../controller/controller.php';
+        $sql = "SELECT * FROM taikhoan WHERE ma_tk='$user_id'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -189,7 +189,7 @@
         return $vaitro;
     }
     function update_user($user_id,$username,$password,$ho_ten, $email,$dia_chi,$sdt,$vai_tro,$file,$img){
-        include '../ketnoi/ketnoi.php';
+        include '../controller/controller.php';
         $errors = [];
         if ($file['size'] > 0) {
             $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
@@ -244,7 +244,7 @@
       
     }
     function doimatkhau($username,$old_password,$new_password,$re_new_password){
-        include './ketnoi/ketnoi.php';
+        include './controller/controller.php';
         $errors = [];
         if($username== ""){
             $errors['username'] = "Bạn chưa nhập Tên đăng nhập";
@@ -310,7 +310,7 @@
         }
     }
     function capnhat_tk( $user_id,$ho_ten,$email,$sdt,$dia_chi,$file,$old_img){
-        include './ketnoi/ketnoi.php';
+        include './controller/controller.php';
         $errors = [];
         $img = $old_img;
         if ($file['size'] > 0) {
@@ -329,7 +329,7 @@
             $errors['email'] = "Email không đúng định dạng";
         }
         else{
-            $sql = "SELECT email FROM taikhoan WHERE user_id !='$user_id' AND  email ='$email' ";
+            $sql = "SELECT email FROM taikhoan WHERE ma_tk !='$user_id' AND  email ='$email' ";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             $check_email = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -346,29 +346,29 @@
         if($sdt == ""){
             $errors['sdt'] = "Số điện thoại không được để trống";
         }
-        $sdt = '/0\d{9,10}/';
+        $sdt = '/^0(1\d{9}|9\d{8})$/';
         if(!preg_match($sdt,$sdt)){
             $errors['sdt'] = "Số điện thoại không đúng định dạng";
         }
         $_SESSION['errors'] =  $errors;
        if(! $errors ){
-        $sql = " UPDATE taikhoan set ho_ten = '$ho_ten', email='$email',dia_chi='$dia_chi',sdt='$sdt', img='$img' WHERE user_id = '$user_id'  ";
+        $sql = " UPDATE taikhoan set ho_ten = '$ho_ten', email='$email',dia_chi='$dia_chi',sdt='$sdt', img='$img' WHERE ma_tk = '$user_id'  ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         move_uploaded_file($file['tmp_name'], './view/img/' . $img);
        }
     }
     function show_tt_theo_user($user_id){
-        include './ketnoi/ketnoi.php';
-        $sql = "SELECT * FROM taikhoan WHERE user_id = '$user_id' ";
+        include './controller/controller.php';
+        $sql = "SELECT * FROM taikhoan WHERE ma_tk = '$user_id' ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         return $user;
     }
     function top3khachhang_muanhieu(){
-        include '../ketnoi/ketnoi.php';
-        $sql = "SELECT taikhoan.ho_ten, taikhoan.img,tbl_order.user_id, taikhoan.dia_chi ,  COUNT(tbl_order.user_id) as 'solanmua' FROM tbl_order JOIN taikhoan ON taikhoan.user_id = tbl_order.user_id GROUP by tbl_order.user_id ";
+        include '../controller/controller.php';
+        $sql = "SELECT taikhoan.ho_ten, taikhoan.avt,tbl_order.ma_tk, taikhoan.dia_chi ,  COUNT(tbl_order.ma_tk) as 'solanmua' FROM tbl_order JOIN taikhoan ON taikhoan.ma_tk = tbl_order.ma_tk GROUP by tbl_order.ma_tk ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $user = $stmt->fetchAll(PDO::FETCH_ASSOC);

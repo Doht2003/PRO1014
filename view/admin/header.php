@@ -28,7 +28,7 @@
 <body>
     <div class="container">
         <div class="box">
-            <img src="../view/img/logo.png" alt="">
+            <a href="../index.php"><img src="../view/img/logo.png"></a>
             <ul>
                 <li> <a href="index.php"><i class="fa-solid fa-house"></i> Trang chủ quản trị</a></li>
                 <li><a href="index.php?act=showdm"><i class="fa-solid fa-bars"></i> Danh mục</a></li>
@@ -49,7 +49,7 @@
                     <ul class="user">
                         <li class="an"><a class="tenuser" href="#">
                                 <div class="chao">Chào :</div> <img src="../view/img/<?= $img ?>" alt="">
-                                <div class="chao"> <?= $hovaten ?> </div> <i id="muiten" class="fa-solid fa-chevron-down"></i>
+                                <div class="chao"> <?= $ho_ten ?> </div> <i id="muiten" class="fa-solid fa-chevron-down"></i>
                             </a>
                         
                             <ul>    

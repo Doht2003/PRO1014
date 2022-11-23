@@ -10,20 +10,20 @@
                 <table class="dangky" >
                    
                    
-                    <input type="hidden" name="user_id" value="<?=$user['user_id']?>">
+                    <input type="hidden" name="user_id" value="<?=$user['ma_tk']?>">
                     <tr>
                         <td class="ten_input">img</td>
                     </tr>
                     <tr>
-                        <td><img src="./view/img/<?=$user['img']?>"" alt="" height="200px"></td>
+                        <td><img src="./view/img/<?=$user['avt']?>"" alt="" height="200px"></td>
                     </tr>
-                    <input type="hidden" name="old_img" value="<?=$user['img']?>">
+                    <input type="hidden" name="old_img" value="<?=$user['avt']?>">
                     <tr>
                         <td colspan="2" id="signupimg"><input  type="file" name="img"></td>
                     </tr>
                     <tr>
-                        <td class="thongbao"><?php if(isset($_SESSION['errors']['img'])):?>
-                                <?=$_SESSION['errors']['img']?>
+                        <td class="thongbao"><?php if(isset($_SESSION['errors']['avt'])):?>
+                                <?=$_SESSION['errors']['avt']?>
                             <?php endif?>
                         </td>
                     </tr>
@@ -31,11 +31,11 @@
                         <td class="ten_input">Họ và tên</td>
                     </tr>
                     <tr>
-                        <td colspan="2" ><input name="hovaten" type="text" value="<?=$user['hovaten']?>"></td>
+                        <td colspan="2" ><input name="hovaten" type="text" value="<?=$user['ho_ten']?>"></td>
                     </tr>
                     <tr>
-                        <td class="thongbao"><?php if(isset($_SESSION['errors']['hovaten'])):?>
-                                <?=$_SESSION['errors']['hovaten']?>
+                        <td class="thongbao"><?php if(isset($_SESSION['errors']['ho_ten'])):?>
+                                <?=$_SESSION['errors']['ho_ten']?>
                             <?php endif?>
                         </td>
                     </tr>
@@ -55,11 +55,11 @@
                         <td class="ten_input">Địa chỉ</td>
                     </tr>
                     <tr>
-                        <td colspan="2" ><input name="address" type="text" value="<?=$user['address']?>"></td>
+                        <td colspan="2" ><input name="address" type="text" value="<?=$user['dia_chi']?>"></td>
                     </tr>
                     <tr>
-                        <td class="thongbao"><?php if(isset($_SESSION['errors']['address'])):?>
-                                <?=$_SESSION['errors']['address']?>
+                        <td class="thongbao"><?php if(isset($_SESSION['errors']['dia_chi'])):?>
+                                <?=$_SESSION['errors']['dia_chi']?>
                             <?php endif?>
                         </td>
                     </tr>
@@ -67,7 +67,7 @@
                         <td class="ten_input">Số điện thoại</td>
                     </tr>
                     <tr>
-                        <td colspan="2" ><input name="tel" type="text" value="<?=$user['tel']?>"></td>
+                        <td colspan="2" ><input name="tel" type="text" value="<?=$user['sdt']?>"></td>
                     </tr>
                     <tr>
                         <td class="thongbao"><?php if(isset($_SESSION['errors']['sdt'])):?>

@@ -20,9 +20,9 @@
            <?php foreach ($detail_doanhthu as $detail_doanhthu_value) : ?>
                 <tr>
                     <td id="ngay"><?= $detail_doanhthu_value['ngay'] ?></td>
-                    <td><?= $detail_doanhthu_value['order_id'] ?></td>
-                    <td><?= $detail_doanhthu_value['hovaten'] ?></td>
-                    <td><?= $detail_doanhthu_value['tel'] ?></td>
+                    <td><?= $detail_doanhthu_value['ma_donhang'] ?></td>
+                    <td><?= $detail_doanhthu_value['ho_ten'] ?></td>
+                    <td><?= $detail_doanhthu_value['sdt'] ?></td>
                     <td id="doanhthu_diachi"><?= $detail_doanhthu_value['address'] ?>
                     <td><?= $detail_doanhthu_value['ngaydathang'] ?></td>
                     <td><?= $detail_doanhthu_value['ngayhoanthanhdonhang'] ?></td>

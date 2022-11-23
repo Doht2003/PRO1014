@@ -159,7 +159,7 @@ if (isset($_GET['act'])) {
       break;
     case 'dangxuat':
       session_unset();
-      header('location: index.php');
+      header('location: ./index.php');
       break;
     case 'vao_trang_quenmk':
       include_once './view/user/forget_password.php';
@@ -268,27 +268,27 @@ if (isset($_GET['act'])) {
       break;
     case 'add_cart':
       if (isset($_POST['btn_cart'])) {
-        $product_id = $_POST['product_id'];
-        $soluongcuasp = $_POST['quantity'];
+        $ma_sp = $_POST['ma_sp'];
+        $soluongcuasp = $_POST['soluong'];
         for ($i = 0; $i <= count(($_SESSION['cart'])) - 1; $i++) {
-          if ($_SESSION['cart'][$i][0] == $product_id) {
+          if ($_SESSION['cart'][$i][0] == $ma_sp) {
             $temp = $_SESSION['cart'][$i][4] + $_POST['soluong'];
             if ($temp >= $soluongcuasp) {
               $_SESSION['checksoluong'] = "Số lượng sản phẩm trong giỏ hàng lớn hơn số lượng sản phẩm";
               header("location: index.php?act=viewcart");
               exit;
             } else {
-              $_SESSION['cart'][$i][4] += $_POST['soluong'];
+              $_SESSION['cart'][$i][4] += $_POST['so_luong'];
               header("location: index.php?act=viewcart");
               exit;
             }
           }
         }
-        $product_name = $_POST['product_name'];
-        $price = $_POST['price'];
-        $img = $_POST['img'];
-        $quantity = $_POST['soluong'];
-        $spadd = [$product_id, $product_name, $price, $img, $quantity];
+        $ten_sp = $_POST['ten_sp'];
+        $gia_sp = $_POST['gia_sp'];
+        $hinh_anh = $_POST['hinh_anh'];
+        $soluong = $_POST['soluong'];
+        $spadd = [$ma_sp, $ten_sp, $gia_sp, $hinh_anh, $soluong];
         array_push($_SESSION['cart'], $spadd);
       }
       header("location: index.php?act=viewcart");
@@ -377,14 +377,14 @@ if (isset($_GET['act'])) {
     case 'capnhat_tk';
       if (isset($_POST['capnhattk'])) {
         $ma_tk = $_POST['ma_tk'];
-        $hovaten = $_POST['hovaten'];
+        $hovaten = $_POST['ho_ten'];
         $email = $_POST['email'];
-        $tel = $_POST['tel'];
-        $address = $_POST['address'];
+        $tel = $_POST['sdt'];
+        $address = $_POST['dia_chi'];
         $file = $_FILES['img'];
         $old_img = $_POST['old_img'];
         capnhat_tk($ma_tk, $hovaten, $email, $tel, $address, $file, $old_img);
-        if (!isset($_SESSION['errors']['img']) && !isset($_SESSION['errors']['hovaten']) && !isset($_SESSION['errors']['email']) && !isset($_SESSION['errors']['address']) && !isset($_SESSION['errors']['sdt'])) {
+        if (!isset($_SESSION['errors']['img']) && !isset($_SESSION['errors']['ho_ten']) && !isset($_SESSION['errors']['email']) && !isset($_SESSION['errors']['dia_chi']) && !isset($_SESSION['errors']['sdt'])) {
           $_SESSION['capnhatthanhcong'] = "Cập nhật tài khoản thành công";
           header("location: index.php?act=vao_trang_taikhoan");
         } else {

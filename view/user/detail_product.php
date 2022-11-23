@@ -2,10 +2,10 @@
     <script>
         var i = 0;
         var mang = [];
-        mang[0] = "/duanmau/view/img/<?= $sanpham['hinh_anh'] ?>"
-        mang[1] = "/duanmau/view/img/<?= $sanpham['hinh_anh_2'] ?>"
-        mang[2] = "/duanmau/view/img/<?= $sanpham['hinh_anh_3'] ?>"
-        mang[3] = "/duanmau/view/img/<?= $sanpham['hinh_anh_4'] ?>"
+        mang[0] = "/duan1/PRO1014/view/img/<?= $product['hinh_anh'] ?>"
+        mang[1] = "/duan1/PRO1014/view/img/<?= $product['hinh_anh_2'] ?>"
+        mang[2] = "/duan1/PRO1014/view/img/<?= $product['hinh_anh_3'] ?>"
+        mang[3] = "/duan1/PRO1014/view/img/<?= $product['hinh_anh_4'] ?>"
 
         var hop = document.getElementsByClassName("anhphu");
 
@@ -82,13 +82,13 @@
     <div class="ctsp">
     <?php if (!empty($product['hinh_anh_4']) && !empty($product['hinh_anh_3']) && !empty($product['hinh_anh_2'])) : ?>
         <div class="anhcon">
-            <img class="anhphu" onclick="chon(0)" src="/duanmau/view/img/<?= $product['hinh_anh'] ?>" alt="">
+            <img class="anhphu" onclick="chon(0)" src="/duan1/PRO1014/view/img/<?= $product['hinh_anh'] ?>" alt="">
 
-            <img class="anhphu" onclick="chon(1)" src="/duanmau/view/img/<?= $product['hinh_anh_2'] ?>" alt="">
+            <img class="anhphu" onclick="chon(1)" src="/duan1/PRO1014/view/img/<?= $product['hinh_anh_2'] ?>" alt="">
 
-            <img class="anhphu" onclick="chon(2)" src="/duanmau/view/img/<?= $product['hinh_anh_3'] ?>" alt="">
+            <img class="anhphu" onclick="chon(2)" src="/duan1/PRO1014/view/img/<?= $product['hinh_anh_3'] ?>" alt="">
 
-            <img class="anhphu" onclick="chon(3)" src="/duanmau/view/img/<?= $product['hinh_anh_4'] ?>" alt="">
+            <img class="anhphu" onclick="chon(3)" src="/duan1/PRO1014/view/img/<?= $product['hinh_anh_4'] ?>" alt="">
         </div>
             <?php endif ?>
         
@@ -103,11 +103,11 @@
         <div class="tt">
 
             <div class="tt_tensp">
-                <h3><?= $sanpham['ten_sp'] ?></h3>
+                <h3><?= $product['ten_sp'] ?></h3>
             </div>
             <div class="tt_gia"><?= format_currency($product['gia_sp']) . "  VNĐ"  ?></div>
           
-            <div class="mota"> <?= $product['description'] ?></div>
+            <div class="mota"> <?= $product['mo_ta'] ?></div>
                 <?php if(isset($_SESSION['user'])){?>
                     <form action="index.php?act=add_cart" method="post">
 
@@ -115,19 +115,19 @@
                         <form action="index.php?act=viewcart" method="post">
 
                         <?php } ?>
-                 <input type="hidden" name="quantity" value="<?=$product['quantity'] ?>">       
+                 <input type="hidden" name="gia_sp" value="<?=$product['gia_sp'] ?>">       
                 <div class="chucnang">
                     
-                   <?php if($product['quantity'] > 0) {?>
+                   <?php if($product['gia_sp'] > 0) {?>
                     <div class="soluong">
                         <button id="cong" type="button" onclick="tru()">-</button>
-                        <input id="soluong" onchange="checksoluong(<?=$product['quantity'] ?>)" name="soluong" type="number" value="1" min="1" >
-                        <button id="cong" type="button" onclick="plus(<?=$product['quantity'] ?>)">+</button>
+                        <input id="soluong" onchange="checksoluong(<?=$product['so_luong'] ?>)" name="soluong" type="number" value="1" min="1" max="<?=$product['so_luong'] ?>" >
+                        <button id="cong" type="button" onclick="plus(<?=$product['so_luong'] ?>)">+</button>
                     </div>
-                        <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
-                        <input type="hidden" name="product_name" value="<?= $product['product_name'] ?>">
-                        <input type="hidden" name="price" value="<?= $product['price'] ?>">
-                        <input type="hidden" name="img" value="<?= $product['img'] ?>">
+                        <input type="hidden" name="ma_sp" value="<?= $product['ma_sp'] ?>">
+                        <input type="hidden" name="ten_sp" value="<?= $product['ten_sp'] ?>">
+                        <input type="hidden" name="giá_sp" value="<?= $product['giá_sp'] ?>">
+                        <input type="hidden" name="hinh_anh" value="<?= $product['hinh_anh'] ?>">
                         <div class="giohang">
                             <button type="submit" class="btn_card" name="btn_cart">ADD TO CART</button>
                     </div>
@@ -138,7 +138,7 @@
             </form>
 
             <div class="dm">
-                <h4>Số lượng: <?=$product['quantity'] ?> </h4>
+                <h4>Số lượng: <?=$product['so_luong'] ?> </h4>
             </div>
 
         </div>
@@ -161,7 +161,7 @@
         <?php $u=-1?>
         <?php foreach ($binhluan as $binhluan) : ?>
             <div class="doituongbl">
-                <img src="/duanmau/view/img/<?= $binhluan['img'] ?>" alt="">
+                <img src="/duan1/PRO1014/view/img/<?= $binhluan['img'] ?>" alt="">
                 <div class="doituongbl2">
                     <div class="ten">
                         <div class="tennguoibl"><?= $binhluan['hovaten'] ?> <?php if ($binhluan['vaitro_id'] != 1) : ?> <div class="tenvaitro">QTV</div> <?php endif ?></div>
@@ -202,7 +202,7 @@
                         <?php foreach ($reps as $rep) : ?>
                             <?php if ($rep['binhluan_id'] == $binhluan['binhluan_id']) : ?>
                                 <div class=" rep">
-                                    <img src="/duanmau/view/img/<?= $rep['img'] ?>" alt="">
+                                    <img src="/duan1/PRO1014/view/img/<?= $rep['img'] ?>" alt="">
                                     <div class="doituongbl2">
                                         <div class="ten">
                                             <div class="tennguoibl"><?= $rep['hovaten'] ?> <?php if ($rep['vaitro_id'] != 1) : ?> <div class="tenvaitro">QTV</div> <?php endif ?></div>
@@ -254,7 +254,7 @@
             <?php foreach ($products_lienquan as $product) : ?>
                 <div class="sp">
                     <div class="anhsp">
-                        <a href="index.php?act=chitiet_sanpham&id=<?= $product['product_id'] ?>&iddm=<?= $product['cate_id'] ?>"><img src="/duanmau/view/img/<?= $product['img'] ?>" alt=""></a>
+                        <a href="index.php?act=chitiet_sanpham&id=<?= $product['product_id'] ?>&iddm=<?= $product['cate_id'] ?>"><img src="/duan1/PRO1014/view/img/<?= $product['img'] ?>" alt=""></a>
                         <div class="nut">
                             <button><a href="index.php?act=chitiet_sanpham&id=<?= $product['product_id'] ?>&iddm=<?= $product['cate_id'] ?>">CHI TIẾT</a></button>
                         </div>

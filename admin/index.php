@@ -4,7 +4,7 @@
         header("location: ../index.php");
     } else {
         extract($_SESSION['user']);
-        if ($vaitro_id == 1) {
+        if ($vai_tro == 2) {
             header("location: ../index.php");
         }
     }
@@ -171,9 +171,9 @@
                 include '../view/admin/taikhoan/list_user.php';
                 break;
             case 'delete_user':
-                if (isset($_GET['user_id'])) {
-                    $user_id = $_GET['user_id'];
-                    delete_user($user_id);
+                if (isset($_GET['ma_tk'])) {
+                    $ma_tk = $_GET['ma_tk'];
+                    delete_user($ma_tk);
                 }
 
                 $users = show_user();
@@ -182,9 +182,9 @@
             case 'edit_user';
                 unset($_SESSION['errors']);
 
-                if (isset($_GET['user_id'])) {
-                    $user_id = $_GET['user_id'];
-                    $user = edit_user($user_id);
+                if (isset($_GET['ma_tk'])) {
+                    $ma_tk = $_GET['ma_tk'];
+                    $user = edit_user($ma_tk);
                     $vaitro = show_vaitro();
                 }
                 require_once "../view/admin/taikhoan/edit_user.php";
@@ -193,7 +193,7 @@
             case 'update_user':
                 unset($_SESSION['errors']);
                 if (isset($_POST['update_user'])) {
-                    $user_id = $_POST['user_id'];
+                    $ma_tk = $_POST['ma_tk'];
                     $username = $_POST['username'];
                     $password = $_POST['password'];
                     $hovaten = $_POST['hovaten'];
@@ -203,14 +203,14 @@
                     $vaitro_id = $_POST['vaitro_id'];
                     $img = $_POST['oldImg'];
                     $file = $_FILES['img'];
-                    update_user($user_id, $username, $password, $hovaten, $email, $address, $tel, $vaitro_id, $file, $img);
+                    update_user($ma_tk, $username, $password, $hovaten, $email, $address, $tel, $vaitro_id, $file, $img);
                 }
                 if (!isset($_SESSION['errors']['password']) && !isset($_SESSION['errors']['hovaten']) && !isset($_SESSION['errors']['email']) && !isset($_SESSION['errors']['address']) && !isset($_SESSION['errors']['tel'])) {
                     $users = show_user();
                     include '../view/admin/taikhoan/list_user.php';
                 } else {
-                    $user_id = $_POST['user_id'];
-                    $user = edit_user($user_id);
+                    $ma_tk = $_POST['ma_tk'];
+                    $user = edit_user($ma_tk);
                     $vaitro = show_vaitro();
                     require_once "../view/admin/taikhoan/edit_user.php";
                 }
