@@ -1,0 +1,1045 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.col_a18A68 {
+    color: #A18A68;
+}
+
+/* * {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+.banner2{
+    width: 100%;
+}
+.banner2 img{
+    width: 100%;
+    height: 500px;
+    z-index: 1;
+}
+.container {
+    width: 100%;
+    height: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    width: 85%;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #cccccc;
+}
+#signupimg{
+    border: none;
+}
+.trai {
+    display: flex;
+}
+
+.trai ul {
+    list-style: none;
+    margin-left: 30px;
+}
+
+.trai ul li {
+    display: inline-block;
+}
+
+.logo img {
+    height: 60px;
+}
+
+.trai ul li a {
+    line-height: 60px;
+    text-decoration: none;
+    color: black;
+    padding: 0 15px;
+}
+
+.phai button a {
+    padding: 10px 0;
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+#muiten{
+    margin-top: 15px;
+    margin-left: 5px;
+    font-size: 20px;
+    transition: 0.2s ease-in-out;
+}
+.an:hover #muiten{
+    transform: rotate(90deg);
+}
+ul li>ul{
+    width: auto;
+    height: auto;
+    list-style: none;
+    display: none;
+    border-top: 1px solid #0FAFE9;
+}
+ul li>ul a{
+    background-color: white;
+    height: 30px;
+    display: block;
+    text-decoration: none;
+    border-bottom: 1px solid #0FAFE9;
+    border-right: 1px solid #0FAFE9;
+    border-left: 1px solid #0FAFE9;
+    line-height: 30px;
+    padding-left: 20px;
+}
+ul li>ul a:hover{
+    background-color: #0FAFE9;
+    color: white;
+}
+.an:hover >ul{
+    display: block;
+    animation: anima ease-in-out 0.5s;
+
+}
+ @keyframes anima{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+ }
+.user{ 
+    z-index: 10;
+    list-style: none;
+    margin-left: 50px;
+    width: auto;
+}
+
+.phai{
+    display: flex;
+}
+.tenuser{
+    display: flex;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.thongbao_detailsp{
+    color: red;
+    margin-top: 30px;
+}
+.chao{
+    margin-top: 20px;
+}
+.user img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.phai button {
+    border: none;
+    text-align: center;
+    height: 60px;
+    width: 130px;
+    background-color: #0FAFE9;
+    border-radius: 10px;
+}
+
+#cart {
+    cursor: pointer;
+    margin: 20px 20px;
+}
+
+.content {
+    width: 85%;
+    height: auto;
+    margin: 0 auto;
+
+}
+.tieudelon{
+    margin-top: 10px;
+    height: 70px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    line-height: 70px;
+    padding-left: 10px;
+    background-color: #0FAFE9;
+    border-radius: 5px;
+}
+
+.search input {
+    padding-left: 10px;
+    width: 185px;
+    height: 40px;
+    border: 1px solid #EBEBEB;
+    border-radius: 7px 0 0 7px;
+    margin: 30px 0;
+}
+
+.search button {
+    position: relative;
+    left: -5px;
+    height: 40px;
+    width: 90px;
+    background-color: #0FAFE9;
+    border-radius: 0px 10px 10px 0px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search p {
+    font-size: 18px;
+    line-height: 29px;
+    color: #656567;
+}
+
+.anh {
+    width: 700px;
+    height: 500px;
+    margin-bottom: 70px;
+}
+
+
+
+.cuoi aside {
+    width: 280px;
+
+
+    border-radius: 10px;
+}
+
+aside h3 {
+    font-size: 25px;
+    line-height: 60px;
+}
+
+aside .tieude {
+    height: 60px;
+    background: #0FAFE9;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+    padding-left: 20px;
+}
+
+aside ul {
+    height: auto;
+    list-style: none;
+}
+
+aside ul li a {
+    display: block;
+    padding: 15px 40px;
+    text-decoration: none;
+    color: black;
+}
+.menucon{
+    float: left;
+    display: flex;
+    flex-direction: column;
+}
+.menucon .topsp{
+    margin: 30px  0px;
+}
+aside ul li{
+    border-top: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    height: auto;
+}
+aside ul li:last-child{
+    border-bottom: 1px solid #cccccc;
+    border-radius: 0px 0px 10px 10px;
+}
+aside ul li a:hover {
+    background: rgba(15, 175, 233, 0.1);
+}
+.yeuthich{
+    height: auto;
+}
+.yeuthich img{
+    width: 50px;
+    height: 50px;
+}
+.yeuthich li{
+    height: 80px;
+}
+.yeuthich li a{
+    display: flex;
+    font-size: 13px;
+}
+.tensp_yeuthich{
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.sp {
+    text-align: center;
+    width: 28%;
+    height: 350px;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+}
+.sp:hover{
+    background-color: #ebebeb;
+}
+.anhsp{
+    padding-top: 3px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 10px;
+    height: 240px;
+    overflow: hidden;
+}
+u{
+    margin-left: 5px;
+}
+.nut{
+    transition: 0.5s ease-in-out;
+}
+.nut button:hover{
+    background-color: white;
+}
+.nut button:hover a{
+    color: black;
+}
+.sp:hover .nut{
+    transform: translateY(-120%);
+}
+.nut button{
+    border: none;
+    background-color: black;
+    padding: 0 10px;
+    height: 25px;
+    border: 3px solid black;
+}
+.nut button a{
+    text-decoration: none;
+    color: white;
+    line-height: 20px;
+}
+.anhsp img {   
+    width: 95%;
+    height: 100%;
+    transition: 0.5s;
+}
+
+.tensp a:hover{
+    color: #0FAFE9;
+}
+.tensp a{
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+}
+.gia {
+    font-weight: bold;
+    color: red;
+    margin-top: 10px;
+    font-size: 19px;
+    line-height: 27px;
+}
+
+section {
+    margin-top: 120px;
+    margin-left: 55px;
+    float: left;
+    width: 950px;   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.splienquan{
+    display: flex;
+    justify-content: space-evenly;
+}
+.spkhac .sp{
+    width: 23%;
+}
+.spkhac{
+    height: auto;
+    width: 100%;
+}
+.banner {
+    width: 100%;
+    background: #E0F0F6;
+    height: 350px;
+    margin-top: 30px;
+    box-shadow: 1px 4px 44px rgba(0, 0, 0, 0.03);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.banner .tieude {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.banner .tieude h2 {
+    color: #0FAFE9;
+}
+
+.banner .tieude p {
+    font-size: 18px;
+    line-height: 29px;
+    margin: 30px 0;
+    color: #656567;
+}
+
+.banner .tieude button {
+    cursor: pointer;
+    background: #0FAFE9;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    width: 120px;
+    height: 50px;
+}
+.minhhoa{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+/* chi tiet san pham */
+.ctsp{
+    margin-top: 40px;
+    display: flex;
+    
+}
+.anhcon{
+    width: 120px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.anhphu{
+    border: 1px solid #cccccc;
+    height: 120px;
+    border-radius: 8px;
+    
+}
+.anhlon img{
+    height: 540px;
+    width: 480px;
+    margin: 0 40px 0 20px;
+    border-radius: 8px;
+}
+.tt {
+    margin-left: 24px;
+}
+.tt_icon i{
+    
+    cursor: pointer;
+}
+.tt_icon i:hover{
+    color: red;
+}
+.tt_tensp{
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+.tt_gia{
+    font-size: 20px;
+    font-weight: 500;
+    color: #A18A68;
+    margin-bottom: 50px;
+}
+.mota{
+    /* list-style-type: circle; */
+    margin-top: 20px;
+    text-align: justify;
+    width: 400px;
+}
+#soluong{
+    width: 100px;
+}
+.ctsp .topsp{
+    margin-left: 20px;
+    width: 350px;
+}
+.chucnang{
+    display: flex;
+}
+.btn_card{
+    margin-left: 20px;
+}
+.giohang button{
+    margin-top: 30px;
+    width: 250px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.5s ease-in-out;
+}
+.giohang button:hover{
+    background-color: #000000;
+    color: white;
+}
+.dm{
+    margin-top: 40px;
+}
+.binhluan{
+    margin-top: 50px;
+}
+ hr{
+    height: 3px;
+    background-color: black;
+}
+.spkhac hr{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.spkhac h2{
+    margin-bottom: 20px;
+}
+.binhluan h2{
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+.doituongbl{
+    width: 60%; 
+    margin-top: 20px;
+}
+.trang{
+    padding-top: 15px;
+    text-align: center;
+    width: 50%;
+    margin: 0 90px;
+}
+.trang button{
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    
+    font-weight: bold;
+    border-radius: 20px;
+    border: 1px solid #cccccc;
+    transition: 0.5s ease-in-out;
+}
+.trang button:hover{
+    background-color: #0FAFE9;
+    
+}
+.trang button a{
+    text-decoration: none;
+    line-height: 40px;
+    display: block;
+    transition: 0.5s ease-in-out;
+}
+.trang button a:hover{
+    color: white;
+}
+#hientai{
+    color: white;
+    background-color: #0FAFE9;
+}
+.phanvung{
+    width: 100%;
+    border-left: 1px solid #cccccc;
+    margin-left: 100px;
+}
+.feedback{
+    width: 100%; 
+    margin-top: 20px;
+    
+}
+.feedback .doituongbl2{
+    width: 87%;
+}
+.doituongbl2{
+    width: 100%;
+}
+.tennguoibl{
+    display: flex;
+}
+.tenvaitro{
+    text-align: center;
+    line-height: 25px;
+    margin-left: 7px;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+    width: 40px;
+    height: 25px;
+    background-color: red;
+}
+.feedback{
+    margin-right: 200px;
+}
+.doituongbl2 .ten{
+    padding-top: 15px;
+    margin-left: 70px;
+    font-weight: bold;
+}
+.ngay{
+    margin: 5px 0px;
+    font-size: 13px;
+    font-weight: normal;
+}
+.doituongbl img{
+    float: left;
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+}
+.feedback img{
+    float: left;
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+}
+.traloi{
+    margin-top: 22px;
+    margin-right: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    color: blueviolet;
+    border: none;
+    background-color: none;
+}
+.traloi:hover{
+    text-decoration: underline;
+}
+.sangdi{
+    display: flex;
+    justify-content: flex-end;
+}
+textarea{
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 70%;
+    margin-bottom: 20px;
+    background-color: buttonface;
+    border-radius: 10px;
+}
+.phanvung .noidungbl{
+    width: 87%;
+}
+.noidungbl{
+    min-height: 70px;
+    margin: 10px 0px;
+    margin-left: 70px;
+    background-color: #f3f4f6;
+    width: 100%;
+    height: auto;
+    padding-left: 10px;
+    border-radius: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.guibl{
+    justify-content: flex-end;
+    width: 70%;
+    display: flex;
+    height: 90px;
+}
+
+
+#formtraloi{
+    width: 87%;
+}
+.formtraloi{
+    width: 110%;
+    padding-left: 78px;
+    justify-content: space-between;
+    display: none;
+}
+
+#nhan{
+    cursor: pointer;
+    height: 50px;
+    width: 80px;
+    border: none;
+    color: red;
+    border-radius: 10px;
+    color: white;
+    background-color: red;
+}
+.guibl button{
+    cursor: pointer;
+    height: 70%;
+    margin-bottom: 50px;
+    padding: 20px 0;
+    display: block;
+    color: white;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    width: 130px;
+    background-color: #0FAFE9;
+    border-radius: 10px;
+}
+/* Login */
+#dangnhap{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.dangnhap{
+    margin: 0 auto;
+}
+.chuyentrang{
+    margin: 0 10px;
+}
+.dangnhap input{
+    width: 100%;
+    padding-left: 20px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+.dangky{
+    margin: 0 auto;
+}
+.dangky2{
+    text-align: center;
+}
+#delete_cart{
+    width: 60px;
+    background-color: red;
+    border: none;
+    border-radius: 7px;
+    height: 30px;
+}
+#delete_cart a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    display: block;
+    line-height: 30px;
+}
+#delete_cart:hover{
+    box-shadow: 0 0 5px;
+}
+.dangky input{
+    width: 100%;
+    padding-left: 20px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+.dangnhap td{
+    width: 300px;
+}
+.dangky td{
+    height: 10px;
+    width: 500px;
+}
+.ten_input{
+    width: 100%;
+    color: #636363;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.quen{
+    padding-top: 30px;
+    
+}
+.quen a{
+    float: right;
+    text-decoration: none;
+}
+.doimk .dn{
+    width: 100%;
+}
+.dn{
+    cursor: pointer;
+    width: 150px ;
+    margin-top: 30px;
+    padding: 20px 0;
+    display: block;
+    color: white;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    background-color: #0FAFE9;
+    border-radius: 10px;
+}
+.capnhat .dk{
+    margin: 0px;
+}
+.dk{
+    cursor: pointer;
+    color: white;
+    width: 100% ;
+    margin-top: 30px;
+    padding: 20px 0;
+    display: block;       
+    border: none;
+    text-align: center;
+    background-color: #0FAFE9;
+    border-radius: 30px;
+    text-decoration: none;   
+}
+
+.thongbao{
+    color: red;
+    height: 30px;
+    width: 300px;
+}
+.xoa{
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.xoa a{
+    margin-top: 10px;
+    color: red;
+    text-decoration: none;
+}
+.xoa a:hover{
+    text-decoration: underline  ;
+}
+.dangky{
+    padding-top: 20px;
+    
+}
+td h4 {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+    font-weight: normal;
+}
+.dangky a:hover{
+    text-decoration: none;
+    color: black;
+}
+td h4 span {
+    background: #fff;
+    padding: 0 10px;
+}
+#cong{
+    cursor: pointer;
+    margin-top: 30px;
+    width: 40px;
+    height: 30px;
+    border: none;
+    color: #707070;
+}
+.table_cart #cong{
+    margin-top: 0px;
+}
+.hoac{
+    padding-top: 10px;
+    text-align: center;
+}
+.tt input{
+    height: 30px;
+    padding-left: 15px;
+    text-align: center;
+    width: 50px;
+    border: none;
+    background-color: buttonface;
+}
+.so{
+    height: 30px;
+    padding-left: 15px;
+    text-align: center;
+    width: 100px;
+    border: none;
+    background-color: buttonface;
+}
+.table_cart{
+    width: auto;
+}
+.table_cart th {
+    height: 60px;
+    border-bottom: 3px solid #ececec;
+    
+}
+.table_cart td{
+    padding: 0 20px;
+    text-align: center;
+    border-bottom: 2px solid #ececec;
+   
+}
+.cart_gia{
+    padding: 0 10px;
+}
+
+#cart_tensp{
+    text-align: left;
+    width: 300px;
+    text-align: left;
+    padding-left: 20px;
+}
+.donhang .table_cart{
+    margin: 0 auto;
+}
+.bang{
+    display: flex;
+}
+.cong_gio_hang {
+    margin-left: 30px;
+}
+.cong_gio_hang{
+    border-left: 1px solid #ececec;
+    padding-left: 20px;
+}
+.cong_gio_hang table th{
+    height: 60px;
+    border-bottom: 3px solid #ececec;
+    font-size: 20px;
+}
+.cong_gio_hang table td{
+    width: 200px;
+    padding: 10px 0;
+    border-bottom: 2px solid #ececec;
+}
+.cong_gio_hang table td button{
+    width: 100%;
+    height: 40px;
+    background-color: red;
+    border: none;
+    transition: 0.5s ease-in-out;
+}
+.cong_gio_hang table td button a{
+    text-decoration: none;
+    height: 100%;
+    line-height: 40px;
+    display: block;
+    color: white;
+    font-weight: bold;
+}
+.cong_gio_hang table td button:hover{
+    background-color: #a8583c;
+    
+}
+.right{
+    text-align: right;
+    font-weight: bold;
+}
+#tenndh{
+    padding: 0 20px;
+}
+.donhang .table_cart td{
+    padding: 10px 15px;
+}
+.cart_error{
+   text-align: center;
+   color: red;
+}
+.cart_error button{
+    margin-top: 20px;
+    width: 250px;
+    height: 40px;
+    background-color: #0FAFE9;
+    border: none;
+    border-radius: 5px;
+}
+.tbcart{
+    color: red;
+}
+.cart_error button:hover{
+    box-shadow: 0 0 5px;
+}
+.capnhat_cart{
+    cursor: pointer;
+    height: 50px;
+    width: 200px;
+    border: none;
+    background-color: blueviolet;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    transition: 1s ease-in-out;
+}
+.capnhat_cart:hover{
+    background-color: #0FAFE9;
+}
+.chitiet_order{
+    cursor: pointer;
+    height: 30px;
+    width: 70px;
+    border: none;
+    background-color: red;
+    border-radius: 6px;
+}
+.chitiet_order a{
+    display: block;
+    line-height: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+#cart_chucnang{
+    padding: 0 5px ;
+}
+#xoa_cart{
+    height: 30px;
+    width: 70px;
+    border: none;
+    background-color: red;
+    border-radius: 6px;
+}
+#xoa_cart a{
+    text-decoration: none;
+    color: white;
+    height: 100%;
+    display: block;
+    line-height: 30px;
+}
+.detail_product_tb{
+    color: red;
+    margin-top: 30px;
+}
+.dacbiet{
+    width: 230px;
+}
+.cart_error p{
+    margin-bottom: 10px;
+}
+.cart_error button a{
+    display: block;
+    height: 100%;
+    line-height: 40px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+.xacnhanmuahang .table_cart{
+    margin: 20px auto;
+    width: auto;
+    
+}
+.xacnhanmuahang{
+    width: auto;
+}
+.xacnhanmuahang .dangky{
+    width: 50%;
+}
+.xacnhanmuahang .dangky td{
+    width: 100%;
+}
+.xacnhanmuahang .dk{
+    width: 50%;
+    margin: 0 auto;
+}
+.xacnhanmuahang .so{
+    background-color: white;
+}
+footer{
+    width: 100%;
+    height: 70px;
+    border: 1px solid #EBEBEB;
+    box-shadow: 1 4 44 0 #000000 3%;
+    margin-top: 50px;
+    text-align: center;
+    line-height: 70px;
+}
+
+

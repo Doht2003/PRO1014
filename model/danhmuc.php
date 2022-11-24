@@ -7,7 +7,7 @@ function add($cate_name)
         $error['cate_name'] = "Bạn chưa nhập tên danh mục";
     } 
     else if($cate_name != " ") {
-        $sql = "SELECT cate_name FROM loai_sp WHERE cate_name ='$cate_name'";
+        $sql = "SELECT ten_loai FROM loai_sp WHERE ten_loai ='$cate_name'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $check_cate_name = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -18,7 +18,7 @@ function add($cate_name)
     $_SESSION['cate_error'] = $error;
        
     if(!$error){   
-        $sql = "INSERT INTO  loai_sp(cate_name) values('$cate_name')";
+        $sql = "INSERT INTO  loai_sp(ten_loai) values('$cate_name')";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }    
@@ -26,7 +26,7 @@ function add($cate_name)
 function delete($id)
 {
     include '../controller/controller.php';
-    $sql = " UPDATE products SET ma_loai = '48' WHERE ma_loai = '$id'";
+    $sql = " UPDATE sanpham SET loai_sp = '48' WHERE loai_sp = '$id'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     if ($sql) {
@@ -52,7 +52,7 @@ function updatedm($ma_loai, $cate_name)
         $error['cate_name'] = "Bạn chưa nhập tên danh mục";
     } 
     else if($cate_name != " ") {
-        $sql = "SELECT cate_name FROM loai_sp WHERE ma_loai !='$ma_loai' AND  cate_name ='$cate_name' ";
+        $sql = "SELECT ten_loai FROM loai_sp WHERE ma_loai !='$ma_loai' AND  ten_loai ='$cate_name' ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $check_cate_name = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -63,7 +63,7 @@ function updatedm($ma_loai, $cate_name)
     $_SESSION['cate_error'] = $error;
        
     if(!$error){   
-        $sql = "UPDATE   loai_sp set  cate_name = ('$cate_name') WHERE ma_loai = '$ma_loai '";
+        $sql = "UPDATE   loai_sp set  ten_loai = ('$cate_name') WHERE ma_loai = '$ma_loai '";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }    
@@ -90,7 +90,7 @@ function showdm_user()
 function thongke_dm()
 {
     include '../controller/controller.php';
-    $sql = "SELECT cate_name , COUNT(loai_sp.ma_loai) as 'soluong' FROM loai_sp JOIN products ON products.ma_loai=loai_sp.ma_loai GROUP BY cate_name";
+    $sql = "SELECT ten_loai , COUNT(loai_sp.ma_loai) as 'so_luong' FROM loai_sp JOIN sanpham ON sanpham.loai_sp=loai_sp.ma_loai GROUP BY ten_loai";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $cates = $stmt->fetchAll(PDO::FETCH_ASSOC);

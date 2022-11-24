@@ -45,9 +45,10 @@
                     <h3>Danh mục</h3>
                 </div>
                 <ul>
+                    <li><a href="index.php">Tất cả sản phẩm</a></li>
                     <?php foreach($categories as $cate) :?>
 
-                    <li><a href="index.php?act=sanpham&iddm=<?= $cate['ma_loai']?>"><?= $cate['loai_sp']?></a></li>
+                    <li><a href="index.php?act=sanpham&iddm=<?= $cate['ma_loai']?>"><?= $cate['ten_loai']?></a></li>
                     
                     <?php endforeach ?>
                 </ul>
@@ -59,7 +60,7 @@
                 </div>
                 <ul class="yeuthich">
                     <?php foreach( $top10sp as $top10sp) :?>
-                        <li><a href="index.php?act=chitiet_sanpham&id=<?= $top10sp['ma_sp'] ?>&iddm=<?= $top10sp['ma_loai'] ?>"><img src="/duanmau/view/img/<?=$top10sp['img']?>" alt=""> <div class="tensp_yeuthich"><?= $top10sp['ten_sp']?></div></a></li>
+                        <li><a href="index.php?act=chitiet_sanpham&id=<?= $top10sp['ma_sp'] ?>&iddm=<?= $top10sp['loai_sp'] ?>"><img src="/duan1/PRO1014/view/img/<?=$top10sp['hinh_anh']?>" alt=""> <div class="tensp_yeuthich"><?= $top10sp['ten_sp']?></div></a></li>
                     <?php endforeach?>          
                 </ul>
                 
@@ -69,12 +70,12 @@
                 <?php foreach($products as $product) :?>
                     <div class="sp">
                     <div class="anhsp">
-                        <a href="index.php?act=chitiet_sanpham&id=<?= $product['ma_sp'] ?>&iddm=<?= $product['ma_loai'] ?>"><img src="./view/img/<?= $product['img'] ?>" alt=""></a>
+                        <a href="index.php?act=chitiet_sanpham&id=<?= $product['ma_sp'] ?>&iddm=<?= $product['loai_sp'] ?>"><img src="./view/img/<?= $product['hinh_anh'] ?>" alt=""></a>
                         <div class="nut">
-                            <button><a href="index.php?act=chitiet_sanpham&id=<?= $product['ma_sp'] ?>&iddm=<?= $product['ma_loai'] ?>">CHI TIẾT</a></button>
+                            <button><a href="index.php?act=chitiet_sanpham&id=<?= $product['ma_sp'] ?>&iddm=<?= $product['loai_sp'] ?>">CHI TIẾT</a></button>
                         </div>
                     </div>
-                    <div class="tensp"><a href="index.php?act=chitiet_sanpham&id=<?= $product['ma_sp'] ?>"><h5><?=$product['ten_sp']?></h5></a></div>
+                    <div class="tensp"><a href="index.php?act=chitiet_sanpham&id=<?= $product['ma_sp'] ?>&iddm=<?= $product['loai_sp'] ?>"><h5><?=$product['ten_sp']?></h5></a></div>
                     <div class="gia"><?= format_currency($product['gia_sp'])  ?> VNĐ</div>
                    
                 </div>
@@ -89,7 +90,7 @@
                     <button type="button">Contact us</button>
                 </div>
                 <div class="minhhoa">
-                    <img src="/duanmau/view/img/banner.jpg" alt="">
+                    <img src="/duan1/PRO1014/view/img/banner.jpg" alt="">
                 </div>
             </div> -->
             <div class="contact">

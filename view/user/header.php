@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +34,7 @@
     <div class="container">
         <header>
             <div class="logo">
-                <a href="./index.php"><img src="./view/img/logo1.png" alt=""></a>
+                <a href="./index.php"><img src="./view/img/logo.png" alt=""></a>
             </div>
             <div class="trai">
                 <!-- <div class="logo">
@@ -54,13 +55,13 @@
                 ?>
                     <ul class="user">
                         <li class="an"><a class="tenuser" href="#">
-                                <div class="chao">Chào:</div> <img src="/duanmau/view/img/<?= $img ?>" alt="">
+                                <div class="chao">Chào:</div> <img src="/duan1/PRO1014/view/img/<?= $avt ?>" alt="">
                                 <div class="chao"> <?= $ho_ten ?> </div> <i id="muiten" class="fa-solid fa-chevron-down"></i>
                             </a>
                             <ul>
                                 <li><a href="">Thông tin tài khoản</a></li>
                                 <li><a href="">Đổi mật khẩu</a></li>
-                                <?php if ($vai_tro == 2) : ?>
+                                <?php if ($vai_tro == 1) : ?>
                                     <li><a href="admin/index.php">Trang quản trị</a></li>
                                 <?php endif ?>
                                 <li><a href="index.php?act=dangxuat">Đăng xuất</a></li>
@@ -70,7 +71,7 @@
                 <?php
                 } else {
                 ?>
-                    <button><a href="index.php?act=vao_trang_dangnhap">Tài khoản</a></button>
+                    <button><a href="./index.php?act=vao_trang_dangnhap">Tài khoản</a></button>
                 <?php } ?>
             </div>
             <div class="bars_nav">

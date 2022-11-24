@@ -14,11 +14,11 @@
                     <td class="ten_input">Người đặt hàng</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input name="hovaten" type="text" value="<?= $_SESSION['user']['hovaten'] ?>"></td>
+                    <td colspan="2"><input name="ho_ten" type="text" value="<?= $_SESSION['user']['ho_ten'] ?>"></td>
                 </tr>
                 <tr>
-                    <td><?php if (isset($_SESSION['errors_muahhang']['hovaten'])) : ?>
-                            <?= $_SESSION['errors_muahhang']['hovaten'] ?>
+                    <td><?php if (isset($_SESSION['errors_muahhang']['ho_ten'])) : ?>
+                            <?= $_SESSION['errors_muahhang']['ho_ten'] ?>
                         <?php endif ?>
                     </td>
                 </tr>
@@ -38,11 +38,11 @@
                     <td class="ten_input">Địa chỉ</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input name="address" type="text" value="<?= $_SESSION['user']['address'] ?>"></td>
+                    <td colspan="2"><input name="dia_chi" type="text" value="<?= $_SESSION['user']['dia_chi'] ?>"></td>
                 </tr>
                 <tr>
-                    <td><?php if (isset($_SESSION['errors_muahhang']['address'])) : ?>
-                            <?= $_SESSION['errors_muahhang']['address'] ?>
+                    <td><?php if (isset($_SESSION['errors_muahhang']['dia_chi'])) : ?>
+                            <?= $_SESSION['errors_muahhang']['dia_chi'] ?>
                         <?php endif ?>
                     </td>
                 </tr>
@@ -50,11 +50,11 @@
                     <td class="ten_input">Số điện thoại</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input name="tel" type="text" value="<?= $_SESSION['user']['tel'] ?>"></td>
+                    <td colspan="2"><input name="sdt" type="text" value="<?= $_SESSION['user']['sdt'] ?>"></td>
                 </tr>
                 <tr>
-                    <td><?php if (isset($_SESSION['errors_muahhang']['tel'])) : ?>
-                            <?= $_SESSION['errors_muahhang']['tel'] ?>
+                    <td><?php if (isset($_SESSION['errors_muahhang']['sdt'])) : ?>
+                            <?= $_SESSION['errors_muahhang']['sdt'] ?>
                         <?php endif ?>
                     </td>
                 </tr>

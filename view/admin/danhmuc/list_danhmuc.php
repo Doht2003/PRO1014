@@ -12,9 +12,9 @@
            <tbody>
            <?php foreach ($cates as $cate) : ?>
                 <tr>
-                    <td><?= $cate['cate_id'] ?></td>
-                    <td><?= $cate['cate_name'] ?></td>
-                    <td><button id="sua"><a  href="index.php?act=edit&id=<?= $cate['cate_id'] ?>">Sửa</a></button><button id="xoa"><a  href="index.php?act=delete&id=<?= $cate['cate_id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')">Xóa</a></button></td>    
+                    <td><?= $cate['ma_loai'] ?></td>
+                    <td><?= $cate['ten_loai'] ?></td>
+                    <td><button id="sua"><a  href="index.php?act=edit&id=<?= $cate['ma_loai'] ?>">Sửa</a></button><button id="xoa"><a  href="index.php?act=delete&id=<?= $cate['ma_loai'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')">Xóa</a></button></td>    
                 </tr>
             <?php endforeach ?>
            </tbody>

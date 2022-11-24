@@ -6,7 +6,7 @@
             <tr>
                 <td>Mã danh mục</td>
                 
-                <input type="hidden" name="cate_id" value="<?=$cate['cate_id']?>">
+                <input type="hidden" name="cate_id" value="<?=$cate['ma_loai']?>">
             </tr>
             <tr>
             <td><input type="text"  disabled></td>
@@ -16,11 +16,11 @@
                 
             </tr>
             <tr>
-            <td><input type="text" name="cate_name" value="<?=$cate['cate_name']?>"></td>
+            <td><input type="text" name="cate_name" value="<?=$cate['ten_loai']?>"></td>
             </tr>
             <tr>
-                <?php if(isset($_SESSION['cate_error']['cate_name'])) :?>
-                    <td class="thongbaoloi"><?=$_SESSION['cate_error']['cate_name'] ?></td>
+                <?php if(isset($_SESSION['cate_error']['ten_loai'])) :?>
+                    <td class="thongbaoloi"><?=$_SESSION['cate_error']['ten_loai'] ?></td>
                     <?php endif?>
             </tr>
             <tr>

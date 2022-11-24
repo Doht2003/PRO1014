@@ -4,12 +4,12 @@
             <table class="form">
                 <h1>Sửa tài khoản</h1>
                 <tr>
-                    <td>User_id</td>
+                    <td>Mã tài khoản</td>
 
-                    <input type="hidden" name="user_id" value="<?= $user['user_id'] ?>">
+                    <input type="hidden" name="ma_tk" value="<?= $user['ma_tk'] ?>">
                 </tr>
                 <tr>
-                    <td><input type="text" disabled value="<?= $user['user_id'] ?>"></td>
+                    <td><input type="text" disabled value="<?= $user['ma_tk'] ?>"></td>
                 </tr>
                 <tr>
                     <td>Tên đăng nhập</td>
@@ -22,24 +22,24 @@
                     <td>Mật khẩu</td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="password" value="<?= $user['password'] ?>"></td>
+                    <td><input type="text" name="mat_khau" value="<?= $user['mat_khau'] ?>"></td>
                 </tr>
                 <tr>
-                    <td><?php if (isset($_SESSION['errors']['password'])) : ?>
+                    <td><?php if (isset($_SESSION['errors']['mat_khau'])) : ?>
                             <div class="loisuauser">
-                                <?= $_SESSION['errors']['password'] ?>
+                                <?= $_SESSION['errors']['mat_khau'] ?>
                             </div>
 
                         <?php endif ?>
                     </td>
                 </tr>
                 <tr>
-                    <td>Img</td>
+                    <td>Avatar</td>
                 </tr>
                 <tr>
-                    <td><img src="../view/img/<?= $user['img'] ?>" height="100px" alt=""></td>
+                    <td><img src="../view/img/<?= $user['avt'] ?>" height="100px" alt=""></td>
                 </tr>
-                <input type="hidden" name="oldImg" value="<?= $user['img'] ?>">
+                <input type="hidden" name="oldImg" value="<?= $user['avt'] ?>">
                 <tr>
                     <td><input type="file" name="img"></td>
                 </tr>
@@ -48,12 +48,12 @@
 
                 </tr>
                 <tr>
-                    <td><input type="text" name="hovaten" value="<?= $user['hovaten'] ?>"></td>
+                    <td><input type="text" name="ho_ten" value="<?= $user['ho_ten'] ?>"></td>
                 </tr>
                 <tr>
-                    <td><?php if (isset($_SESSION['errors']['hovaten'])) : ?>
+                    <td><?php if (isset($_SESSION['errors']['ho_ten'])) : ?>
                         <div class="loisuauser">
-                            <?= $_SESSION['errors']['hovaten'] ?>
+                            <?= $_SESSION['errors']['ho_ten'] ?>
                     </div>
                         <?php endif ?>
                     </td>
@@ -78,12 +78,12 @@
 
                 </tr>
                 <tr>
-                    <td><input type="text" name="address" value="<?= $user['address'] ?>"></td>
+                    <td><input type="text" name="dia_chi" value="<?= $user['dia_chi'] ?>"></td>
                 </tr>
                 <tr>
-                    <td><?php if (isset($_SESSION['errors']['address'])) : ?>
+                    <td><?php if (isset($_SESSION['errors']['dia_chi'])) : ?>
                         <div class="loisuauser">
-                            <?= $_SESSION['errors']['address'] ?>
+                            <?= $_SESSION['errors']['dia_chi'] ?>
                             </div>
                         <?php endif ?>
                     </td>
@@ -93,12 +93,12 @@
 
                 </tr>
                 <tr>
-                    <td><input type="text" name="tel" value="<?= $user['tel'] ?>"></td>
+                    <td><input type="text" name="sdt" value="<?= $user['sdt'] ?>"></td>
                 </tr>
                 <tr>
-                    <td><?php if (isset($_SESSION['errors']['tel'])) : ?>
+                    <td><?php if (isset($_SESSION['errors']['sdt'])) : ?>
                         <div class="loisuauser">
-                            <?= $_SESSION['errors']['tel'] ?>
+                            <?= $_SESSION['errors']['sdt'] ?>
                     </div>
                         <?php endif ?>
                     </td>
@@ -108,9 +108,9 @@
 
                 </tr>
                 <tr>
-                    <td><select class="trong" name="vaitro_id">
+                    <td><select class="trong" name="ma_vt">
                             <?php foreach ($vaitro as $vaitro) : ?>
-                                <option value="<?= $vaitro['vaitro_id'] ?>" <?= ($vaitro['vaitro_id'] == $user['vaitro_id']) ? "selected" : "" ?>><?= $vaitro['vaitro'] ?></option>
+                                <option value="<?= $vaitro['ma_vt'] ?>" <?= ($vaitro['ma_vt'] == $user['vai_tro']) ? "selected" : "" ?>><?= $vaitro['ten_vt'] ?></option>
                             <?php endforeach ?>
                         </select></td>
                 </tr>
