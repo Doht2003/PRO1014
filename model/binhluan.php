@@ -1,13 +1,13 @@
 <?php
 
-function gui_binhluan($user_id, $product_id, $noidungbl)
+function gui_binhluan($tai_khoan, $san_pham, $noidungbl)
 {
     include './controller/controller.php';
     if ($noidungbl == " ") {
         $noidungbl_error = "Nội dung bình luận không được để trống";
     }
     if (!isset($noidungbl_error)) {
-        $sql = "INSERT INTO binhluan(user_id,product_id,noidung) VALUES ('$user_id','$product_id','$noidungbl')";
+        $sql = "INSERT INTO binhluan(tai_khoan,san_pham,noi_dung) VALUES ('$tai_khoan','$san_pham','$noidungbl')";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }
@@ -36,36 +36,36 @@ function sotrang($id, $so_sanpham_tren1trang)
         return $sotrang;
     }
 }
-function delete_binhluan($id_binhluan)
+function delete_binhluan($ma_bl)
 {
     include './controller/controller.php';
-    $sql = "DELETE FROM binhluan WHERE binhluan_id = '$id_binhluan' ";
+    $sql = "DELETE FROM binhluan WHERE ma_bl = '$ma_bl' ";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 }
-function delete_binhluan2($id_binhluan)
+function delete_binhluan2($ma_bl)
 {
     include './controller/controller.php';
-    $sql = "DELETE FROM rep WHERE binhluan_id = '$id_binhluan' ";
+    $sql = "DELETE FROM rep_bl WHERE ma_bl = '$ma_bl' ";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 }
 
-function delete_rep($rep_id)
+function delete_rep($ma_rep)
 {
     include './controller/controller.php';
-    $sql = "DELETE FROM rep WHERE rep_id = '$rep_id' ";
+    $sql = "DELETE FROM rep_bl WHERE ma_rep = '$ma_rep' ";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 }
-function guirep($user_id, $product_id, $noidungbl, $binhluan_id)
+function guirep($ma_tk, $ma_sp, $noidungbl, $ma_bl)
 {
     include './controller/controller.php';
     if ($noidungbl == " ") {
         $noidungbl_error = "Nội dung bình luận không được để trống";
     }
     if (!isset($noidungbl_error)) {
-        $sql = "INSERT INTO rep(binhluan_id,user_id,product_id,noidung) VALUES ('$binhluan_id','$user_id','$product_id','$noidungbl')";
+        $sql = "INSERT INTO rep(ma_bl,ma_tk,ma_sp,noi_dung) VALUES ('$ma_bl','$ma_tk','$ma_sp','$noidungbl')";
         // chuẩn bị
         $stmt = $conn->prepare($sql);
         //Thực thi
@@ -95,41 +95,41 @@ function list_binhluan()
     $binhluan = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $binhluan;
 }
-function chitietBinhluan($product_id)
+function chitietBinhluan($ma_sp)
 {
     include '../controller/controller.php';
-    $sql = "SELECT binhluan.binhluan_id,product_id,taikhoan.hovaten,binhluan.ngaybl,taikhoan.img,binhluan.noidung
-         FROM binhluan JOIN taikhoan ON taikhoan.user_id=binhluan.user_id where product_id = '$product_id'";
+    $sql = "SELECT binhluan.ma_bl,san_pham,taikhoan.ho_ten,binhluan.ngay_bl,taikhoan.avt,binhluan.noi_dung
+         FROM binhluan JOIN taikhoan ON taikhoan.ma_tk=binhluan.tai_khoan where tai_khoan = '$ma_sp'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $chitiet_binhluan = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return  $chitiet_binhluan;
 }
-function checkbinhluan_co_traloi($product_id)
+function checkbinhluan_co_traloi($ma_sp)
 {
     include '../controller/controller.php';
-    $sql = "SELECT binhluan_id FROM rep WHERE product_id = $product_id ";
+    $sql = "SELECT ma_bl FROM rep_bl WHERE ma_sp = $ma_sp ";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $binhluan_co_traloi = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $binhluan_co_traloi;
 }
-function admin_xoabinhluan($binhluan_id)
+function admin_xoabinhluan($ma_bl)
 {
     include '../controller/controller.php';
-    $sql = "DELETE FROM rep WHERE binhluan_id = '$binhluan_id'";
+    $sql = "DELETE FROM rep WHERE ma_bl = '$ma_bl'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     if ($sql) {
-        $sql = "DELETE FROM binhluan WHERE binhluan_id = '$binhluan_id'";
+        $sql = "DELETE FROM binhluan WHERE ma_bl = '$ma_bl'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }
 }
-function show_rep_theo_binhluan($binhluan_id)
+function show_rep_theo_binhluan($ma_bl)
 {
     include '../controller/controller.php';
-    $sql = "SELECT rep_id, binhluan_id, taikhoan.hovaten,taikhoan.img,noidung,ngay_traloi FROM rep JOIN taikhoan ON taikhoan.user_id=rep.user_id  WHERE binhluan_id= '$binhluan_id'";
+    $sql = "SELECT rep_id, ma_bl, taikhoan.hovaten,taikhoan.img,noidung,ngay_traloi FROM rep JOIN taikhoan ON taikhoan.user_id=rep.user_id  WHERE binhluan_id= '$binhluan_id'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $rep = $stmt->fetchAll(PDO::FETCH_ASSOC);

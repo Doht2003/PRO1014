@@ -149,7 +149,7 @@
         <hr>
         <h2>Bình luận (<?php if(isset($so_binhluan['soluong_binhluan'])) {?> <?=$so_binhluan['soluong_binhluan']?> <?php } else{?> <?="0"?> <?php } ?>)</h2>
         
-        <form action="index.php?act=guibinhluan&id=<?= $product['product_id'] ?>&iddm=<?= $product['cate_id'] ?>" method="post">
+        <form action="index.php?act=guibinhluan&id=<?= $product['ma_sp'] ?>&iddm=<?= $product['loai_sp'] ?>" method="post">
             <textarea name="noidungbl" id="" cols="30" rows="10"></textarea>
             <div class="guibl">
                 <?php if (isset($_SESSION['thongbaobinhluan'])) : ?>
@@ -161,25 +161,25 @@
         <?php $u=-1?>
         <?php foreach ($binhluan as $binhluan) : ?>
             <div class="doituongbl">
-                <img src="/duan1/PRO1014/view/img/<?= $binhluan['img'] ?>" alt="">
+                <img src="/duan1/PRO1014/view/img/<?= $binhluan['avt'] ?>" alt="">
                 <div class="doituongbl2">
                     <div class="ten">
-                        <div class="tennguoibl"><?= $binhluan['hovaten'] ?> <?php if ($binhluan['vaitro_id'] != 1) : ?> <div class="tenvaitro">QTV</div> <?php endif ?></div>
+                        <div class="tennguoibl"><?= $binhluan['ho_ten'] ?> <?php if ($binhluan['vai_tro'] != 2) : ?> <div class="tenvaitro">QTV</div> <?php endif ?></div>
                         <div class="ngay">
-                            <?= $binhluan['ngaybl'] ?>
+                            <?= $binhluan['ngay_bl'] ?>
                         </div>
                     </div>
                     <div class="noidungbl">
-                        <?= $binhluan['noidung'] ?>
+                        <?= $binhluan['noi_dung'] ?>
                         <?php if (isset($_SESSION['user'])) : ?>
-                            <?php if ($binhluan['user_id'] == $user_id) : ?>
+                            <?php if ($binhluan['tai_khoan'] == $ma_tk) : ?>
                                 <div class="xoa">
-                                    <a href="index.php?act=delete_binhluan&id_binhluan=<?= $binhluan['binhluan_id'] ?>&id=<?= $product['product_id'] ?>&iddm=<?= $product['cate_id'] ?>">Xóa</a>
+                                    <a href="index.php?act=delete_binhluan&id_binhluan=<?= $binhluan['ma_bl'] ?>&id=<?= $product['ma_sp'] ?>&iddm=<?= $product['loai_sp'] ?>">Xóa</a>
                                 </div>
                             <?php endif ?>
                         <?php endif ?>
                         <?php if (isset($_SESSION['user'])) : ?>
-                            <?php if ($binhluan['user_id'] != $user_id) : ?>
+                            <?php if ($binhluan['tai_khoan'] != $ma_tk) : ?>
                                 <div class=" sangdi">
                                 <?php $u++ ?>
                                     <button class="traloi" type="button" onclick="hien(<?= $u ?>)">Trả lời</button>
@@ -189,9 +189,9 @@
 
                     </div>
                     <?php if (isset($_SESSION['user'])) : ?>
-                        <?php if ($binhluan['user_id'] != $user_id) : ?>
+                        <?php if ($binhluan['tai_khoan'] != $ma_tk) : ?>
                             
-                            <form class="formtraloi" action="index.php?act=guirep&id=<?= $product['product_id'] ?>&id_binhluan=<?= $binhluan['binhluan_id'] ?>&iddm=<?= $product['cate_id'] ?>" method="post">
+                            <form class="formtraloi" action="index.php?act=guirep&id=<?= $product['ma_sp'] ?>&id_binhluan=<?= $binhluan['ma_bl'] ?>&iddm=<?= $product['loai_sp'] ?>" method="post">
                                 <textarea id="formtraloi" name="rep" cols="30" rows="10" placeholder="Trả lời"></textarea>
                                 <button type="submit" name="guirep" id="nhan">Gửi</button>
                             </form>
@@ -200,22 +200,22 @@
 
                     <div class="phanvung">
                         <?php foreach ($reps as $rep) : ?>
-                            <?php if ($rep['binhluan_id'] == $binhluan['binhluan_id']) : ?>
+                            <?php if ($rep['ma_bl'] == $binhluan['ma_bl']) : ?>
                                 <div class=" rep">
-                                    <img src="/duan1/PRO1014/view/img/<?= $rep['img'] ?>" alt="">
+                                    <img src="/duan1/PRO1014/view/img/<?= $rep['avt'] ?>" alt="">
                                     <div class="doituongbl2">
                                         <div class="ten">
-                                            <div class="tennguoibl"><?= $rep['hovaten'] ?> <?php if ($rep['vaitro_id'] != 1) : ?> <div class="tenvaitro">QTV</div> <?php endif ?></div>
+                                            <div class="tennguoibl"><?= $rep['ho_ten'] ?> <?php if ($rep['vai_tro'] != 2) : ?> <div class="tenvaitro">QTV</div> <?php endif ?></div>
                                             <div class="ngay">
                                                 <?= $rep['ngay_traloi'] ?>
                                             </div>
                                         </div>
                                         <div class="noidungbl">
-                                            <?= $rep['noidung'] ?>
+                                            <?= $rep['noi_dung'] ?>
                                             <?php if (isset($_SESSION['user'])) : ?>
-                                                <?php if ($rep['user_id'] == $user_id) : ?>
+                                                <?php if ($rep['tai_khoan'] == $ma_tk) : ?>
                                                     <div class="xoa">
-                                                        <a href="index.php?act=delete_rep&rep_id=<?= $rep['rep_id'] ?>&id=<?= $product['product_id'] ?>&iddm=<?= $product['cate_id'] ?>">Xóa</a>
+                                                        <a href="index.php?act=delete_rep&rep_id=<?= $rep['ma_rep'] ?>&id=<?= $product['ma_sp'] ?>&iddm=<?= $product['loai_sp'] ?>">Xóa</a>
                                                     </div>
                                                 <?php endif ?>
                                             <?php endif ?>

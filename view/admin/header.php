@@ -48,7 +48,7 @@
 
                     <ul class="user">
                         <li class="an"><a class="tenuser" href="#">
-                                <div class="chao">Chào :</div> <img src="../view/img/<?= $img ?>" alt="">
+                                <div class="chao">Chào :</div> <img src="../view/img/<?= $avt ?>" alt="">
                                 <div class="chao"> <?= $ho_ten ?> </div> <i id="muiten" class="fa-solid fa-chevron-down"></i>
                             </a>
                         

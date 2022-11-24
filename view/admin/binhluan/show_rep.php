@@ -18,13 +18,13 @@
                 <tbody>
                     <?php foreach ($rep as $rep) : ?>
                         <tr>
-                            <td><?= $rep['binhluan_id'] ?></td>
-                            <td><?= $rep['rep_id'] ?></td>
-                            <td><img class="anhuser" src="../view/img/<?= $rep['img'] ?>" alt=""></td>
-                            <td><?= $rep['hovaten'] ?></td>
-                            <td><?= $rep['noidung'] ?></td>
+                            <td><?= $rep['ma_bl'] ?></td>
+                            <td><?= $rep['ma_rep'] ?></td>
+                            <td><img class="anhuser" src="../view/img/<?= $rep['avt'] ?>" alt=""></td>
+                            <td><?= $rep['ho_ten'] ?></td>
+                            <td><?= $rep['noi_dung'] ?></td>
                             <td><?= $rep['ngay_traloi'] ?></td>
-                            <td><button id="xoa" onclick="return confirm('Bạn có chắc chắn muốn xóa câu trả lời không ?')" ><a href="index.php?act=admin_xoa_rep&rep_id=<?= $rep['rep_id'] ?>&binhluan_id=<?=$binhluan_id?>">Xóa</a></button></td>
+                            <td><button id="xoa" onclick="return confirm('Bạn có chắc chắn muốn xóa câu trả lời không ?')" ><a href="index.php?act=admin_xoa_rep&ma_rep=<?= $rep['ma_rep'] ?>&ma_bl=<?=$ma_bl?>">Xóa</a></button></td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

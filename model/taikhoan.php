@@ -92,16 +92,16 @@
                 $errors['sdt'] = "Số điện thoại đã tồn tại";
             }
         }
-        $sdt = '/^[0-9]*$/';
-        if(!preg_match($sdt,$sdt)){
-            $errors['sdt'] = "Số điện thoại không đúng định dạng";
-        }
-        $_SESSION['errors'] =  $errors;
+        // $sdt = '/^0[0-9]{8}$/';
+        // if(!preg_match($sdt,$sdt)){
+        //     $errors['sdt'] = "Số điện thoại không đúng định dạng";
+        // }
+        // $_SESSION['errors'] =  $errors;
        if(! $errors ){
-        $sql = "INSERT INTO taikhoan(username,password,ho_ten,email,dia_chi,sdt,img) VALUES ('$username','$mat_khau','$ho_ten','$email','$dia_chi','$sdt','$img') ";
+        $sql = "INSERT INTO taikhoan(username,mat_khau,ho_ten,email,dia_chi,sdt,avt) VALUES ('$username','$mat_khau','$ho_ten','$email','$dia_chi','$sdt','$avt') ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        move_uploaded_file($file['tmp_name'], './view/img/' . $img);
+        move_uploaded_file($file['tmp_name'], './view/img/' . $avt);
        }
         
     }
@@ -143,7 +143,7 @@
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $users;
     }
-    function delete_user($user_id){
+    function delete_user($ma_tk){
         include '../controller/controller.php';
         $sql = "SELECT taikhoan.ma_tl, binhluan.ma_bl FROM taikhoan JOIN binhluan ON binhluan.ma_tk = taikhoan.ma_tk WHERE taikhoan.ma_tk = '1'";
         $stmt = $conn->prepare($sql);
@@ -155,26 +155,26 @@
             $stmt = $conn->prepare($sql);
             $stmt->execute();
         }
-        $sql = "DELETE FROM binhluan  WHERE ma_kt = '$user_id'";
+        $sql = "DELETE FROM binhluan  WHERE ma_kt = '$ma_tk'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
-        $sql = "DELETE FROM feedback  WHERE ma_kt = '$user_id'";
+        $sql = "DELETE FROM feedback  WHERE ma_kt = '$ma_tk'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
-        $sql = "DELETE FROM cart  WHERE ma_kt = '$user_id'";
+        $sql = "DELETE FROM cart  WHERE ma_kt = '$ma_tk'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
        
 
-        $sql = "DELETE FROM taikhoan  WHERE ma_kt = '$user_id'";
+        $sql = "DELETE FROM taikhoan  WHERE ma_kt = '$ma_tk'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }
-    function edit_user($user_id){
+    function edit_user($ma_tk){
         include '../controller/controller.php';
-        $sql = "SELECT * FROM taikhoan WHERE ma_tk='$user_id'";
+        $sql = "SELECT * FROM taikhoan WHERE ma_tk='$ma_tk'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -188,23 +188,23 @@
         $vaitro = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $vaitro;
     }
-    function update_user($user_id,$username,$password,$ho_ten, $email,$dia_chi,$sdt,$vai_tro,$file,$img){
+    function update_user($ma_tk,$username,$mat_khau,$ho_ten, $email,$dia_chi,$sdt,$vaitro,$file,$avt){
         include '../controller/controller.php';
         $errors = [];
         if ($file['size'] > 0) {
             $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
             $ext = strtolower($ext);
             if ($ext != "png" && $ext != "jpeg" && $ext != "jpg" && $ext != "gif") {
-                $errors['img'] = "Không đúng định dạnh ảnh";
+                $errors['avt'] = "Không đúng định dạnh ảnh";
             } else {
-                $img = $file['name'];
+                $avt = $file['name'];
             }
         }
-        if($password == ""){
-            $errors['password'] = "Bạn chưa nhập password";
+        if($mat_khau == ""){
+            $errors['mat_khau'] = "Bạn chưa nhập mật khẩu";
         }
-        else if( strlen($password) < 3){
-            $errors['password'] = "Password phải lớn hơn 3 ký tự";
+        else if( strlen($mat_khau) < 3){
+            $errors['mat_khau'] = "Mật khẩu phải lớn hơn 3 ký tự";
         }
         if($email == ""){
             $errors['email'] = "Email không được để trống";
@@ -213,7 +213,7 @@
             $errors['email'] = "Email không đúng định dạng";
         }
         else{
-            $sql = "SELECT email FROM taikhoan WHERE user_id !='$user_id' AND  email ='$email' ";
+            $sql = "SELECT email FROM taikhoan WHERE ma_tk !='$ma_tk' AND  email ='$email' ";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             $check_email = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -230,16 +230,16 @@
         if($sdt == ""){
             $errors['sdt'] = "Số điện thoại không được để trống";
         }
-        $sdt = '/0\d{9,10}/';
-        if(!preg_match($sdt,$sdt)){
-            $errors['sdt'] = "Số điện thoại không đúng định dạng";
-        }
-        $_SESSION['errors'] =  $errors;
+        // $sdt = '/^0[0-9]{8}$/';
+        // if(!preg_match('/^0[0-9]{8}$/',$sdt)){
+        //     $errors['sdt'] = "Số điện thoại không đúng định dạng";
+        // }
+        // $_SESSION['errors'] =  $errors;
        if(!$errors){
-        $sql = "UPDATE taikhoan SET user_id = '$user_id',username='$username',password = '$password',ho_ten='$ho_ten',email='$email',dia_chi='$dia_chi',sdt='$sdt',vai_tro='$vai_tro',img='$img'WHERE user_id = '$user_id'";
+        $sql = "UPDATE taikhoan SET ma_tk = '$ma_tk',username='$username',mat_khau = '$mat_khau',ho_ten='$ho_ten',email='$email',dia_chi='$dia_chi',sdt='$sdt',vai_tro='$vaitro',avt='$avt'WHERE ma_tk = '$ma_tk'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        move_uploaded_file($file['tmp_name'], '../view/img/' . $img);
+        move_uploaded_file($file['tmp_name'], '../view/img/' . $avt);
        }
       
     }
@@ -309,7 +309,7 @@
             $stmt->execute();
         }
     }
-    function capnhat_tk( $user_id,$ho_ten,$email,$sdt,$dia_chi,$file,$old_img){
+    function capnhat_tk( $ma_tk,$ho_ten,$email,$sdt,$dia_chi,$file,$old_img){
         include './controller/controller.php';
         $errors = [];
         $img = $old_img;
@@ -329,7 +329,7 @@
             $errors['email'] = "Email không đúng định dạng";
         }
         else{
-            $sql = "SELECT email FROM taikhoan WHERE ma_tk !='$user_id' AND  email ='$email' ";
+            $sql = "SELECT email FROM taikhoan WHERE ma_tk !='$ma_tk' AND  email ='$email' ";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             $check_email = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -346,21 +346,21 @@
         if($sdt == ""){
             $errors['sdt'] = "Số điện thoại không được để trống";
         }
-        $sdt = '/^0(1\d{9}|9\d{8})$/';
-        if(!preg_match($sdt,$sdt)){
-            $errors['sdt'] = "Số điện thoại không đúng định dạng";
-        }
+        // $sdt = '/^0[0-9]{8}$/';
+        // if(!preg_match($sdt,$sdt)){
+        //     $errors['sdt'] = "Số điện thoại không đúng định dạng";
+        // }
         $_SESSION['errors'] =  $errors;
        if(! $errors ){
-        $sql = " UPDATE taikhoan set ho_ten = '$ho_ten', email='$email',dia_chi='$dia_chi',sdt='$sdt', img='$img' WHERE ma_tk = '$user_id'  ";
+        $sql = " UPDATE taikhoan set ho_ten = '$ho_ten', email='$email',dia_chi='$dia_chi',sdt='$sdt', img='$img' WHERE ma_tk = '$ma_tk'  ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         move_uploaded_file($file['tmp_name'], './view/img/' . $img);
        }
     }
-    function show_tt_theo_user($user_id){
+    function show_tt_theo_user($ma_tk){
         include './controller/controller.php';
-        $sql = "SELECT * FROM taikhoan WHERE ma_tk = '$user_id' ";
+        $sql = "SELECT * FROM taikhoan WHERE ma_tk = '$ma_tk' ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);

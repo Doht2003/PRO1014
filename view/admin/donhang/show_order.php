@@ -34,23 +34,23 @@
                 <?php foreach ($show_order as $order) : ?>
                     <tr>
                         
-                        <td ><?=$order['order_id']?></td>
-                        <td><?= $order['hovaten'] ?></td>
+                        <td ><?=$order['ma_donhang']?></td>
+                        <td><?= $order['ho_ten'] ?></td>
                         <td><?= $order['email'] ?></td>
-                        <td><?= $order['tel'] ?></td>
-                        <td><?= $order['address'] ?></td>
+                        <td><?= $order['sdt'] ?></td>
+                        <td><?= $order['dia_chi'] ?></td>
                         <td id="ngaythang"><?= $order['ngaydathang'] ?></td>
                         <?php $count++; ?>
                         <form class="donhang" action="index.php?act=capnhat_donhang" method="post">
-                        <input name="order_id" type="hidden" value="<?=$order['order_id']?>">
+                        <input name="ma_donhang" type="hidden" value="<?=$order['ma_donhang']?>">
                         <input type="hidden" name="tong" value="<?=$order['tong']?>">
-                        <td><select  <?=($order['status_id']==3)?'disabled': ""?> name="trangtdh" class="trangthaidonhang" onchange="trangthai(<?=$count?>,<?=$order['status_id']?>)">
+                        <td><select  <?=($order['ma_trangthai']==3)?'disabled': ""?> name="trangtdh" class="trangthaidonhang" onchange="trangthai(<?=$count?>,<?=$order['ma_trangthai']?>)">
                             <?php foreach($status as $value) : ?>
-                                <option value="<?=$value['status_id']?>"<?=($value['status_id']==$order['status_id'])?'selected':""?>><?=$value['status']?></option>
+                                <option value="<?=$value['ma_trangthai']?>"<?=($value['ma_trangthai']==$order['ma_trangthai'])?'selected':""?>><?=$value['status']?></option>
                             <?php endforeach ?>
                         </select></td>
                         <td><button class="btn_donhang" name="btn_capnhat_donhang" type="submit">Cập nhật</button></td>
-                        <td><button id="xoa"><a href="index.php?act=chitiet_donhang&order_id=<?=$order['order_id']?>">Chi tiết</a></button></td>
+                        <td><button id="xoa"><a href="index.php?act=chitiet_donhang&ma_donhang=<?=$order['ma_donhang']?>">Chi tiết</a></button></td>
                         </form>
                     </tr>
                 <?php endforeach ?>

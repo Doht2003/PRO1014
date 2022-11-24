@@ -23,7 +23,7 @@ function dathang($ma_tk, $ho_ten, $sdt, $email, $dia_chi,$tong)
     }
     $_SESSION['errors_muahhang'] =  $errors;
     if (!$errors) {
-        $sql = "INSERT INTO tbl_order(ma_tk,ho_ten,sdt,email,dia_chi,status_id,tong) VALUES('$id_user','$ho_ten','$sdt', '$email','$dia_chi',1,'$tong')";
+        $sql = "INSERT INTO tbl_order(ma_tk,ho_ten,sdt,email,dia_chi,ma_trangthai,tong) VALUES('$id_user','$ho_ten','$sdt', '$email','$dia_chi',1,'$tong')";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         if ($sql) {
@@ -31,7 +31,7 @@ function dathang($ma_tk, $ho_ten, $sdt, $email, $dia_chi,$tong)
             foreach ($_SESSION['cart'] as $cart) {
                 $product_id = $cart[0];
                 $quantity = $cart[4];
-                $sql = "INSERT INTO order_detail(order_id,product_id,quantity) VALUES('$last_id','$product_id','$quantity')";
+                $sql = "INSERT INTO order_detail(ma_donhang,product_id,quantity) VALUES('$last_id','$product_id','$quantity')";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
             }
@@ -46,25 +46,25 @@ function dathang($ma_tk, $ho_ten, $sdt, $email, $dia_chi,$tong)
 function showdonhang_theo_user($ma_tk)
 {
     include './controller/controller.php';
-    $sql = "SELECT order_id,ho_ten,email,sdt,dia_chi,ngaydathang,tbl_order.status_id,order_status.status FROM tbl_order JOIN order_status ON order_status.status_id = tbl_order.status_id  WHERE ma_tk = '$ma_tk' order by ngaydathang DESC";
+    $sql = "SELECT ma_donhang,ho_ten,email,sdt,dia_chi,ngaydathang,tbl_order.ma_trangthai,trangthai_donhang.trangthai FROM tbl_order JOIN trangthai_donhang ON trangthai_donhang.ma_trangthai = tbl_order.ma_trangthai  WHERE ma_tk = '$ma_tk' order by ngaydathang DESC";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $my_order = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $my_order;
 }
-function show_chitiet_order($order_id)
+function show_chitiet_order($ma_donhang)
 {
     include './controller/controller.php';
-    $sql = " SELECT order_id, order_detail.quantity, products.product_name,products.price,products.img  FROM order_detail JOIN products ON products.product_id = order_detail.product_id WHERE order_id = '$order_id' order by products.price desc";
+    $sql = " SELECT ma_donhang, order_detail.quantity, products.product_name,products.price,products.img  FROM order_detail JOIN products ON products.product_id = order_detail.product_id WHERE ma_donhang = '$ma_donhang' order by products.price desc";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $order_details = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $order_details;
 }
-function admin_show_chitiet_order($order_id)
+function admin_show_chitiet_order($ma_donhang)
 {
     include '../controller/controller.php';
-    $sql = " SELECT order_id, order_detail.quantity, products.product_name,products.price,products.img  FROM order_detail JOIN products ON products.product_id = order_detail.product_id WHERE order_id = '$order_id'";
+    $sql = " SELECT ma_donhang, order_detail.quantity, products.product_name,products.price,products.img  FROM order_detail JOIN products ON products.product_id = order_detail.product_id WHERE ma_donhang = '$ma_donhang'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $order_details = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -79,11 +79,11 @@ function showdonhang()
     $show_order = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $show_order;
 }
-function capnhat_donhang($status, $order_id,$tong)
+function capnhat_donhang($status, $ma_donhang,$tong)
 {
     include '../controller/controller.php';
     if($status==3){
-        $sql = "UPDATE  tbl_order SET status_id = 3 ,ngayhoanthanhdonhang = CURRENT_DATE - INTERVAL 1 day   WHERE order_id = '$order_id'  ";
+        $sql = "UPDATE  tbl_order SET ma_trangthai = 3 ,ngayhoanthanhdonhang = CURRENT_DATE - INTERVAL 1 day   WHERE ma_donhang = '$ma_donhang'  ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         if($sql){
@@ -106,7 +106,7 @@ function capnhat_donhang($status, $order_id,$tong)
         }
     }
     else{
-        $sql = "UPDATE  tbl_order SET status_id = '$status' WHERE order_id = '$order_id'  ";
+        $sql = "UPDATE  tbl_order SET ma_trangthai = '$status' WHERE ma_donhang = '$ma_donhang'  ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }

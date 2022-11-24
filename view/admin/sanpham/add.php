@@ -6,13 +6,13 @@
             <table class="form">
             <h1>Thêm sản phẩm</h1>
                 <tr>
-                    <td>product_id</td>
+                    <td>Mã sản phẩm</td>
                 </tr>
                 <tr>
                     <td><input type="text" disabled></td>
                 </tr>
                 <tr>
-                    <td>product_name</td>
+                    <td>Tên sản phẩm</td>
                 </tr>
                 <tr>
                     <td><input type="text" name="product_name"></td>
@@ -20,14 +20,14 @@
                 <tr>
                     <td>
                         <div class="loi">
-                            <?php if (isset( $_SESSION['error_product']['product_name'])) : ?>
-                                <?= $_SESSION['error_product']['product_name'] ?>
+                            <?php if (isset( $_SESSION['error_product']['ten_sp'])) : ?>
+                                <?= $_SESSION['error_product']['ten_sp'] ?>
                             <?php endif ?>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td>price</td>
+                    <td>Giá sản phẩm</td>
                 </tr>
                 <tr>
                     <td><input type="number" name="price"></td>
@@ -35,14 +35,14 @@
                 <tr>
                     <td>
                         <div class="loi">
-                            <?php if (isset( $_SESSION['error_product']['price'])) : ?>
-                                <?= $_SESSION['error_product']['price'] ?>
+                            <?php if (isset( $_SESSION['error_product']['gia_sp'])) : ?>
+                                <?= $_SESSION['error_product']['gia_sp'] ?>
                             <?php endif ?>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td>img</td>
+                    <td>Hình ảnh 1</td>
                 </tr>
                 <tr>
                     <td><input type="file" name="img"></td>
@@ -50,20 +50,20 @@
                 <tr>
                     <td>
                         <div class="loi">
-                            <?php if (isset( $_SESSION['error_product']['img'])) : ?>
-                                <?= $_SESSION['error_product']['img'] ?>
+                            <?php if (isset( $_SESSION['error_product']['hinh_anh'])) : ?>
+                                <?= $_SESSION['error_product']['hinh_anh'] ?>
                             <?php endif ?>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td>img2</td>
+                    <td>Hình ảnh 2</td>
                 </tr>
                 <tr>
                     <td>
                         <div class="loi">
-                            <?php if (isset( $_SESSION['error_product']['img2'])) : ?>
-                                <?= $_SESSION['error_product']['img2'] ?>
+                            <?php if (isset( $_SESSION['error_product']['hinh_anh_2'])) : ?>
+                                <?= $_SESSION['error_product']['hinh_anh_2'] ?>
                             <?php endif ?>
                         </div>
                     </td>
@@ -72,7 +72,7 @@
                     <td><input type="file" name="img2"></td>
                 </tr>
                 <tr>
-                    <td>img3</td>
+                    <td>Hình ảnh 3</td>
                 </tr>
                
                 <tr>
@@ -81,14 +81,14 @@
                 <tr>
                     <td>
                         <div class="loi">
-                            <?php if (isset( $_SESSION['error_product']['img3'])) : ?>
-                                <?= $_SESSION['error_product']['img3'] ?>
+                            <?php if (isset( $_SESSION['error_product']['hinh_anh_3'])) : ?>
+                                <?= $_SESSION['error_product']['hinh_anh_3'] ?>
                             <?php endif ?>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td>img4</td>
+                    <td>Hình ảnh 4</td>
                 </tr>
                 <tr>
                     <td><input type="file" name="img4"></td>
@@ -96,20 +96,20 @@
                 <tr>
                     <td>
                         <div class="loi">
-                            <?php if (isset( $_SESSION['error_product']['img4'])) : ?>
-                                <?= $_SESSION['error_product']['img'] ?>
+                            <?php if (isset( $_SESSION['error_product']['hinh_anh_4'])) : ?>
+                                <?= $_SESSION['error_product']['hinh_anh_4'] ?>
                             <?php endif ?>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td>description</td>
+                    <td>Mô tả</td>
                 </tr>
                 <tr>
                     <td><textarea name="description" id="" cols="52" rows="10"></textarea></td>
                 </tr>
                 <tr>
-                    <td>quantity</td>
+                    <td>Số lượng</td>
                 </tr>
                 <tr>
                     <td><input type="number" name="quantity" ></td>
@@ -117,19 +117,19 @@
                 <tr>
                     <td>
                         <div class="loi">
-                            <?php if (isset( $_SESSION['error_product']['quantity'])) : ?>
-                                <?= $_SESSION['error_product']['quantity'] ?>
+                            <?php if (isset( $_SESSION['error_product']['so_luong'])) : ?>
+                                <?= $_SESSION['error_product']['so_luong'] ?>
                             <?php endif ?>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td>cate_id</td>
+                    <td>Loại sản phẩm</td>
                 </tr>
                 <tr>
-                    <td><select class="trong" name="cate_id" id="">
+                    <td><select class="trong" name="ma_loai" id="">
                             <?php foreach ($cates as $cate) : ?>
-                                <option value="<?= $cate['cate_id'] ?>"><?= $cate['cate_name'] ?></option>
+                                <option value="<?= $cate['ma_loai'] ?>"><?= $cate['ten_loai'] ?></option>
                             <?php endforeach ?>
                         </select></td>
                 </tr>

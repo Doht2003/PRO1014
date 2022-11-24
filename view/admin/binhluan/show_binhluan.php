@@ -18,12 +18,12 @@
                 <tbody>
                 <?php foreach ($binhluan as $binhluan) : ?>
                     <tr>
-                        <td><img src="../view/img/<?=$binhluan['img']?>"  alt="" height="100px"></td>
-                        <td><?= $binhluan['product_name'] ?></td>
-                        <td><?= $binhluan['soluong'] ?></td>
-                        <td><?= $binhluan['moiNhat'] ?></td>
-                        <td><?= $binhluan['cuNhat'] ?></td>
-                        <td><button id="sua"><a href="index.php?act=chitietBinhluan&product_id=<?= $binhluan['product_id'] ?>">Chi tiết</a></button></td>
+                        <td><img src="../view/img/<?=$binhluan['hinh_anh']?>"  alt="" height="100px"></td>
+                        <td><?= $binhluan['ten_sp'] ?></td>
+                        <td><?= $binhluan['so_luong'] ?></td>
+                        <td><?= $binhluan['moi_nhat'] ?></td>
+                        <td><?= $binhluan['cu_nhat'] ?></td>
+                        <td><button id="sua"><a href="index.php?act=chitietBinhluan&ma_sp=<?= $binhluan['ma_sp'] ?>">Chi tiết</a></button></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>

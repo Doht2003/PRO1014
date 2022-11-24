@@ -79,13 +79,13 @@
             case "showsp":
                 if (isset($_POST['tim'])) {
                     $kyw = $_POST['kyw'];
-                    $cate_id = $_POST['cate_id'];
+                    $ma_loai = $_POST['loai_sp'];
                 } else {
                     $kyw = "";
-                    $cate_id = 0;
+                    $ma_loai = 0;
                 }
                 $cates = showdm();
-                $products = showsp($kyw, $cate_id);
+                $products = showsp($kyw, $ma_loai);
                 include "../view/admin/sanpham/list_sp.php";
 
                 break;
@@ -93,17 +93,17 @@
             case "addsp":
                 $cates = showdm();
                 if (isset($_POST['them'])) {
-                    $product_name = $_POST['product_name'];
-                    $price = $_POST['price'];
-                    $description = $_POST['description'];
-                    $cate_id = $_POST['cate_id'];
-                    $quantity = $_POST['quantity'];
-                    $file = $_FILES['img'];
-                    $file2 = $_FILES['img2'];
-                    $file3 = $_FILES['img3'];
-                    $file4 = $_FILES['img4'];
-                    if (!isset($_SESSION['error_product']['img']) && !isset($_SESSION['error_product']['img2']) && !isset($_SESSION['error_product']['img3']) && !isset($_SESSION['error_product']['img4']) && !isset($_SESSION['error_product']['product_name']) && !isset($_SESSION['error_product']['price']) && !isset($_SESSION['error_product']['quantity'])) {
-                        addsp($product_name, $price, $description, $quantity, $file, $file2, $file3, $file4, $cate_id);
+                    $ten_sp = $_POST['ten_sp'];
+                    $gia_sp = $_POST['gia_sp'];
+                    $mo_ta = $_POST['mo_ta'];
+                    $ma_loai = $_POST['loai_sp'];
+                    $so_luong = $_POST['so_luong'];
+                    $img = $_FILES['hinh_anh'];
+                    $img2 = $_FILES['hinh_anh_2'];
+                    $img3 = $_FILES['hinh_anh_3'];
+                    $img4 = $_FILES['hinh_anh_4'];
+                    if (!isset($_SESSION['error_product']['hinh_anh']) && !isset($_SESSION['error_product']['hinh_anh_2']) && !isset($_SESSION['error_product']['hinh_anh_3']) && !isset($_SESSION['error_product']['hinh_anh_4']) && !isset($_SESSION['error_product']['ten_sp']) && !isset($_SESSION['error_product']['gia_sp']) && !isset($_SESSION['error_product']['so_luong'])) {
+                        addsp($ten_sp, $gia_sp, $mo_ta, $so_luong, $img, $img2, $img3, $img4, $ma_loai);
                         header("location: index.php?act=showsp");
                     } else {
                         include "../view/admin/sanpham/add.php";
@@ -195,17 +195,17 @@
                 if (isset($_POST['update_user'])) {
                     $ma_tk = $_POST['ma_tk'];
                     $username = $_POST['username'];
-                    $password = $_POST['password'];
-                    $hovaten = $_POST['hovaten'];
+                    $mat_khau = $_POST['mat_khau'];
+                    $ho_ten = $_POST['ho_ten'];
                     $email = $_POST['email'];
-                    $address = $_POST['address'];
-                    $tel = $_POST['tel'];
-                    $vaitro_id = $_POST['vaitro_id'];
+                    $dia_chi = $_POST['dia_chi'];
+                    $sdt = $_POST['sdt'];
+                    $vaitro = $_POST['ma_vt'];
                     $img = $_POST['oldImg'];
                     $file = $_FILES['img'];
-                    update_user($ma_tk, $username, $password, $hovaten, $email, $address, $tel, $vaitro_id, $file, $img);
+                    update_user($ma_tk, $username, $mat_khau, $ho_ten, $email, $dia_chi, $sdt, $vaitro, $file, $img);
                 }
-                if (!isset($_SESSION['errors']['password']) && !isset($_SESSION['errors']['hovaten']) && !isset($_SESSION['errors']['email']) && !isset($_SESSION['errors']['address']) && !isset($_SESSION['errors']['tel'])) {
+                if (!isset($_SESSION['errors']['mat_khau']) && !isset($_SESSION['errors']['ho_ten']) && !isset($_SESSION['errors']['email']) && !isset($_SESSION['errors']['dia_chi']) && !isset($_SESSION['errors']['sdt'])) {
                     $users = show_user();
                     include '../view/admin/taikhoan/list_user.php';
                 } else {
@@ -220,10 +220,10 @@
                 require_once "../view/admin/binhluan/show_binhluan.php";
                 break;
             case 'chitietBinhluan':
-                if (isset($_GET['product_id'])) {
-                    $product_id = $_GET['product_id'];
-                    $chitiet_binhluan = chitietBinhluan($product_id);
-                    $binhluan_co_traloi = checkbinhluan_co_traloi($product_id);
+                if (isset($_GET['ma_sp'])) {
+                    $ma_sp = $_GET['ma_sp'];
+                    $chitiet_binhluan = chitietBinhluan($ma_sp);
+                    $binhluan_co_traloi = checkbinhluan_co_traloi($ma_sp);
                 }
                 include "../view/admin/binhluan/detailbinhluan.php";
                 break;

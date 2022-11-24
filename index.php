@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include './controller/controller.php';
 include './view/user/header.php';
@@ -25,7 +26,7 @@ if (isset($_GET['act'])) {
             $id = $_GET['id'];
             $noidung = $_POST['noidungbl'];
             if ($noidung != "") {
-              gui_binhluan($user_id, $id, $noidung);
+              gui_binhluan($ma_tk, $id, $noidung);
             } else {
               $_SESSION['thongbaobinhluan'] = "Nội dung bình luận không được để trống ";
             }
@@ -159,7 +160,7 @@ if (isset($_GET['act'])) {
       break;
     case 'dangxuat':
       session_unset();
-      header('location: ./index.php');
+      header('location: index.php');
       break;
     case 'vao_trang_quenmk':
       include_once './view/user/forget_password.php';
@@ -326,15 +327,15 @@ if (isset($_GET['act'])) {
       break;
     case 'vao_donhang':
       if (isset($_SESSION['user'])) {
-        $user_id = $_SESSION['user']['user_id'];
+        $user_id = $_SESSION['user']['ma_tk'];
         $my_orders = showdonhang_theo_user($user_id);
       }
       include './view/user/my_order.php';
       break;
     case 'chitiet_order':
-      if (isset($_GET['order_id'])) {
-        $order_id = $_GET['order_id'];
-        $order_details = show_chitiet_order($order_id);
+      if (isset($_GET['ma_donhang'])) {
+        $ma_donhang = $_GET['ma_donhang'];
+        $order_details = show_chitiet_order($ma_donhang);
       }
       include './view/user/order_detail.php';
       break;
@@ -399,3 +400,5 @@ if (isset($_GET['act'])) {
   include './view/user/home.php';
 }
 include './view/user/footer.php';
+ob_end_flush();
+?>
