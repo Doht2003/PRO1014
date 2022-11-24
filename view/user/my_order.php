@@ -14,16 +14,16 @@
                 </tr>
                 <?php foreach ( $my_orders  as $my_order) : ?>
                    <tr id="hang">
-                    <td><?=$my_order['order_id']?></td>
-                    <td id="tenndh"><?=$my_order['hovaten']?></td>
+                    <td><?=$my_order['ma_donhang']?></td>
+                    <td id="tenndh"><?=$my_order['ho_ten']?></td>
                     <td><?=$my_order['email']?></td>
-                    <td><?=$my_order['tel']?></td>
-                    <td><?=$my_order['address']?></td>
+                    <td><?=$my_order['sdt']?></td>
+                    <td><?=$my_order['dia_chi']?></td>
                     <td><?=$my_order['ngaydathang']?></td>
-                    <td><?=$my_order['status']?> 
+                    <td><?=$my_order['trangthai']?> 
                            
                         </td>
-                    <td><button class="chitiet_order"><a href="index.php?act=chitiet_order&order_id=<?=$my_order['order_id']?>">Chi tiết</a></button></td>
+                    <td><button class="chitiet_order"><a href="index.php?act=chitiet_order&ma_donhang=<?=$my_order['ma_donhang']?>">Chi tiết</a></button></td>
                    </tr>
                 <?php endforeach ?>
             </table>

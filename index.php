@@ -327,8 +327,8 @@ if (isset($_GET['act'])) {
       break;
     case 'vao_donhang':
       if (isset($_SESSION['user'])) {
-        $user_id = $_SESSION['user']['ma_tk'];
-        $my_orders = showdonhang_theo_user($user_id);
+        $ma_tk = $_SESSION['user']['ma_tk'];
+        $my_orders = showdonhang_theo_user($ma_tk);
       }
       include './view/user/my_order.php';
       break;

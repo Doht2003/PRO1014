@@ -17,11 +17,11 @@ function dathang($ma_tk, $ho_ten, $sdt, $email, $dia_chi,$tong)
     if ($sdt == "") {
         $errors['sdt'] = "Số điện thoại không được để trống";
     }
-    $sdt = '/0\d{9,10}/';
-    if (!preg_match($sdt, $sdt)) {
-        $errors['sdt'] = "Số điện thoại không đúng định dạng";
-    }
-    $_SESSION['errors_muahhang'] =  $errors;
+    // $sdt = '/0\d{9,10}/';
+    // if (!preg_match($sdt, $sdt)) {
+    //     $errors['sdt'] = "Số điện thoại không đúng định dạng";
+    // }
+    // $_SESSION['errors_muahhang'] =  $errors;
     if (!$errors) {
         $sql = "INSERT INTO tbl_order(ma_tk,ho_ten,sdt,email,dia_chi,ma_trangthai,tong) VALUES('$id_user','$ho_ten','$sdt', '$email','$dia_chi',1,'$tong')";
         $stmt = $conn->prepare($sql);
@@ -55,7 +55,7 @@ function showdonhang_theo_user($ma_tk)
 function show_chitiet_order($ma_donhang)
 {
     include './controller/controller.php';
-    $sql = " SELECT ma_donhang, order_detail.quantity, products.product_name,products.price,products.img  FROM order_detail JOIN products ON products.product_id = order_detail.product_id WHERE ma_donhang = '$ma_donhang' order by products.price desc";
+    $sql = " SELECT ma_donhang, order_detail.so_luong, sanpham.ten_sp,sanpham.gia_sp,sanpham.hinh_anh  FROM order_detail JOIN sanpham ON sanpham.ma_sp = order_detail.ma_sp WHERE ma_donhang = '$ma_donhang' order by sanpham.gia_sp desc";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $order_details = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -64,7 +64,7 @@ function show_chitiet_order($ma_donhang)
 function admin_show_chitiet_order($ma_donhang)
 {
     include '../controller/controller.php';
-    $sql = " SELECT ma_donhang, order_detail.quantity, products.product_name,products.price,products.img  FROM order_detail JOIN products ON products.product_id = order_detail.product_id WHERE ma_donhang = '$ma_donhang'";
+    $sql = " SELECT ma_donhang, order_detail.so_luong, sanpham.ten_sp,sanpham.gia_sp,sanpham.hinh_anh  FROM order_detail JOIN sanpham ON sanpham.ma_sp = order_detail.ma_sp WHERE ma_donhang = '$ma_donhang'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $order_details = $stmt->fetchAll(PDO::FETCH_ASSOC);
