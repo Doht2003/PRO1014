@@ -63,7 +63,7 @@ function chitiet_sp($id)
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
     return $product;
 }
-function addsp($ten_sp, $gia_sp, $mo_ta, $so_luong, $file, $file2, $file3, $file4, $ma_sp,$img,$img2,$img3,$img4)
+function addsp($product_name, $price, $description, $quantity, $file, $file2, $file3, $file4, $cate_id)
 {   
     include '../controller/controller.php';
     $error = [];
@@ -72,19 +72,19 @@ function addsp($ten_sp, $gia_sp, $mo_ta, $so_luong, $file, $file2, $file3, $file
         $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
         $ext = strtolower($ext);
         if ($ext != "png" && $ext != "jpeg" && $ext != "jpg" && $ext != "gif") {
-            $error['hinh_anh'] = "Không đúng định dạnh ảnh";
+            $error['img'] = "Không đúng định dạnh ảnh";
         } else {
             $img = $file['name'];
         }
     }
     else{
-        $error['hinh_anh'] = "Bạn chưa up ảnh";
+        $error['img'] = "Bạn chưa up ảnh";
     }
     if ($file2['size'] > 0) {
         $ext2 = pathinfo($file2['name'], PATHINFO_EXTENSION);
         $ext2 = strtolower($ext2);
         if ($ext2 != "png" && $ext2 != "jpeg" && $ext2 != "jpg" && $ext2 != "gif") {
-            $error['hinh_anh_2'] = "Không đúng định dạnh ảnh";
+            $error['img2'] = "Không đúng định dạnh ảnh";
         } else {
             $img2 = $file2['name'];
         }
@@ -93,7 +93,7 @@ function addsp($ten_sp, $gia_sp, $mo_ta, $so_luong, $file, $file2, $file3, $file
         $ext3 = pathinfo($file3['name'], PATHINFO_EXTENSION);
         $ext3 = strtolower($ext3);
         if ($ext3 != "png" && $ext3 != "jpeg" && $ext3 != "jpg" && $ext3 != "gif") {
-            $error['hinh_anh_3'] = "Không đúng định dạnh ảnh";
+            $error['img3'] = "Không đúng định dạnh ảnh";
         } else {
             $img3 = $file3['name'];
         }
@@ -102,28 +102,28 @@ function addsp($ten_sp, $gia_sp, $mo_ta, $so_luong, $file, $file2, $file3, $file
         $ext4 = pathinfo($file4['name'], PATHINFO_EXTENSION);
         $ext4 = strtolower($ext4);
         if ($ext4 != "png" && $ext4 != "jpeg" && $ext4 != "jpg" && $ext4 != "gif") {
-            $error['hinh_anh_4'] = "Không đúng định dạnh ảnh";
+            $error['img4'] = "Không đúng định dạnh ảnh";
         } else {
             $img4 = $file4['name'];
         }
     }
-    if($so_luong == ""){
-        $error['so_luong'] = "Bạn chưa nhập số lượng"; 
+    if($quantity == ""){
+        $error['quantity'] = "Bạn chưa nhập số lượng"; 
     }
     else if($quantity <=0){
-        $error['so_luong'] = "Số lượng phải là số dương"; 
+        $error['quantity'] = "Số lượng phải là số dương"; 
     }
-    if ($ten_sp == "") {
-        $error['ten_sp'] = "Bạn chưa nhập tên sản phẩm";
+    if ($product_name == "") {
+        $error['product_name'] = "Bạn chưa nhập tên sản phẩm";
     }
-    if ($gia_sp == "") {
-        $error['gia_sp'] = "Bạn chưa nhập giá sản phẩm";
+    if ($price == "") {
+        $error['price'] = "Bạn chưa nhập giá sản phẩm";
     } else if ($price <= 0) {
-        $error['gia_sp'] = "Giá phải là số dương";
+        $error['price'] = "Giá phải là số dương";
     }
     $_SESSION['error_product'] = $error;
     if (!$error) {
-        $sql = "INSERT INTO sanpham(ten_sp,gia_sp,hinh_anh,hinh_anh_2,hinh_anh_3,hinh_anh_4,mo_ta,so_luong,loai_sp) VALUES ('$ten_sp','$gia_sp','$img','$img2','$img3','$img4','$mo_ta',$so_luong,' $ma_sp')";
+        $sql = "INSERT INTO sanpham(ten_sp,gia_sp,hinh_anh,hinh_anh_2,hinh_anh_3,hinh_anh_4,mo_ta,so_luong,loai_sp) VALUES ('$product_name','$price','$img','$img2','$img3','$img4','$description',$quantity,' $cate_id')";
         // chuẩn bị
         $stmt = $conn->prepare($sql);
         //Thực thi

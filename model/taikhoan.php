@@ -7,7 +7,7 @@
         $account = $stmt->fetch(PDO::FETCH_ASSOC);
         return $account;
     }
-    function dangky($username,$mat_khau,$repassword,$ho_ten,$email,$dia_chi,$sdt,$file){
+    function dangky($username,$mat_khau,$repassword,$ho_ten,$email,$dia_chi,$sdt,$avt){
         include './controller/controller.php';
         $errors = [];
         if ($file['size'] > 0) {
@@ -16,7 +16,7 @@
             if ($ext != "png" && $ext != "jpeg" && $ext != "jpg" && $ext != "gif") {
                 $errors['img'] = "Không đúng định dạnh ảnh";
             } else {
-                $img = $file['name'];
+                $avt = $file['name'];
             }
         }
         else{

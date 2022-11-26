@@ -254,15 +254,15 @@
             <?php foreach ($products_lienquan as $product) : ?>
                 <div class="sp">
                     <div class="anhsp">
-                        <a href="index.php?act=chitiet_sanpham&id=<?= $product['product_id'] ?>&iddm=<?= $product['cate_id'] ?>"><img src="/duan1/PRO1014/view/img/<?= $product['img'] ?>" alt=""></a>
+                        <a href="index.php?act=chitiet_sanpham&id=<?= $product['ma_sp'] ?>&iddm=<?= $product['loai_sp'] ?>"><img src="/duan1/PRO1014/view/img/<?= $product['hinh_anh'] ?>" alt=""></a>
                         <div class="nut">
-                            <button><a href="index.php?act=chitiet_sanpham&id=<?= $product['product_id'] ?>&iddm=<?= $product['cate_id'] ?>">CHI TIẾT</a></button>
+                            <button><a href="index.php?act=chitiet_sanpham&id=<?= $product['ma_sp'] ?>&iddm=<?= $product['loai_sp'] ?>">CHI TIẾT</a></button>
                         </div>
                     </div>
-                    <div class="tensp"><a href="index.php?act=chitiet_sanpham&id=<?= $product['product_id'] ?>">
-                            <h5><?= $product['product_name'] ?></h5>
+                    <div class="tensp"><a href="index.php?act=chitiet_sanpham&id=<?= $product['ma_sp'] ?>&iddm=<?= $product['loai_sp'] ?>">
+                            <h5><?= $product['ten_sp'] ?></h5>
                         </a></div>
-                    <div class="gia"><?= format_currency($product['price']) . " VNĐ" ?></div>
+                    <div class="gia"><?= format_currency($product['gia_sp']) . " VNĐ" ?></div>
 
                 </div>
             <?php endforeach ?>

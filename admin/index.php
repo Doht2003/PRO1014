@@ -79,7 +79,7 @@
             case "showsp":
                 if (isset($_POST['tim'])) {
                     $kyw = $_POST['kyw'];
-                    $ma_loai = $_POST['loai_sp'];
+                    $ma_loai = $_POST['cate_id'];
                 } else {
                     $kyw = "";
                     $ma_loai = 0;
@@ -93,17 +93,17 @@
             case "addsp":
                 $cates = showdm();
                 if (isset($_POST['them'])) {
-                    $ten_sp = $_POST['ten_sp'];
-                    $gia_sp = $_POST['gia_sp'];
-                    $mo_ta = $_POST['mo_ta'];
-                    $ma_loai = $_POST['loai_sp'];
-                    $so_luong = $_POST['so_luong'];
-                    $img = $_FILES['hinh_anh'];
-                    $img2 = $_FILES['hinh_anh_2'];
-                    $img3 = $_FILES['hinh_anh_3'];
-                    $img4 = $_FILES['hinh_anh_4'];
-                    if (!isset($_SESSION['error_product']['hinh_anh']) && !isset($_SESSION['error_product']['hinh_anh_2']) && !isset($_SESSION['error_product']['hinh_anh_3']) && !isset($_SESSION['error_product']['hinh_anh_4']) && !isset($_SESSION['error_product']['ten_sp']) && !isset($_SESSION['error_product']['gia_sp']) && !isset($_SESSION['error_product']['so_luong'])) {
-                        addsp($ten_sp, $gia_sp, $mo_ta, $so_luong, $img, $img2, $img3, $img4, $ma_loai);
+                    $product_name = $_POST['product_name'];
+                    $price = $_POST['price'];
+                    $description = $_POST['description'];
+                    $ma_loai = $_POST['ma_loai'];
+                    $quantity = $_POST['quantity'];
+                    $file = $_FILES['img'];
+                    $file2 = $_FILES['img2'];
+                    $file3 = $_FILES['img3'];
+                    $file4 = $_FILES['img4'];
+                    if (!isset($_SESSION['error_product']['img']) && !isset($_SESSION['error_product']['img2']) && !isset($_SESSION['error_product']['img3']) && !isset($_SESSION['error_product']['img4']) && !isset($_SESSION['error_product']['product_name']) && !isset($_SESSION['error_product']['price']) && !isset($_SESSION['error_product']['quantity'])) {
+                        addsp($product_name, $price, $description, $quantity, $file, $file2, $file3, $file4, $ma_loai);
                         header("location: index.php?act=showsp");
                     } else {
                         include "../view/admin/sanpham/add.php";
