@@ -241,9 +241,9 @@
                 }
                 break;
             case 'show_rep_theo_binhluan':
-                if (isset($_GET['binhluan_id'])) {
-                    $binhluan_id = $_GET['binhluan_id'];
-                    $rep = show_rep_theo_binhluan($binhluan_id);
+                if (isset($_GET['ma_bl'])) {
+                    $ma_bl = $_GET['ma_bl'];
+                    $rep = show_rep_theo_binhluan($ma_bl);
                     include '../view/admin/binhluan/show_rep.php';
                 }
                 break;

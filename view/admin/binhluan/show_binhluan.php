@@ -23,7 +23,7 @@
                         <td><?= $binhluan['so_luong'] ?></td>
                         <td><?= $binhluan['moi_nhat'] ?></td>
                         <td><?= $binhluan['cu_nhat'] ?></td>
-                        <td><button id="sua"><a href="index.php?act=chitietBinhluan&ma_sp=<?= $binhluan['ma_sp'] ?>">Chi tiết</a></button></td>
+                        <td><button id="sua"><a href="index.php?act=show_rep_theo_binhluan&ma_sp=<?= $binhluan['ma_sp'] ?>">Chi tiết</a></button></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>

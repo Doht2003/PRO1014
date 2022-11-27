@@ -216,7 +216,7 @@ if (isset($_GET['act'])) {
                 $iddm = $_GET['iddm'];
                 $id_binhluan = $_GET['id_binhluan'];
                 $noidungfb = $_POST['rep'];
-                guirep($user_id, $id, $noidungfb, $id_binhluan);
+                guirep($ma_tk, $id, $noidungfb, $id_binhluan);
                 if (isset($_GET['so_sanpham_tren1trang'])) {
                   $so_sanpham_tren1trang = $_GET['so_sanpham_tren1trang'];
                 } else {

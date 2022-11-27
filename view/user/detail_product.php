@@ -126,7 +126,7 @@
                     </div>
                         <input type="hidden" name="ma_sp" value="<?= $product['ma_sp'] ?>">
                         <input type="hidden" name="ten_sp" value="<?= $product['ten_sp'] ?>">
-                        <input type="hidden" name="giá_sp" value="<?= $product['giá_sp'] ?>">
+                        <input type="hidden" name="giá_sp" value="<?= $product['gia_sp'] ?>">
                         <input type="hidden" name="hinh_anh" value="<?= $product['hinh_anh'] ?>">
                         <div class="giohang">
                             <button type="submit" class="btn_card" name="btn_cart">ADD TO CART</button>
@@ -213,7 +213,7 @@
                                         <div class="noidungbl">
                                             <?= $rep['noi_dung'] ?>
                                             <?php if (isset($_SESSION['user'])) : ?>
-                                                <?php if ($rep['tai_khoan'] == $ma_tk) : ?>
+                                                <?php if ($rep['ma_tk'] == $ma_tk) : ?>
                                                     <div class="xoa">
                                                         <a href="index.php?act=delete_rep&rep_id=<?= $rep['ma_rep'] ?>&id=<?= $product['ma_sp'] ?>&iddm=<?= $product['loai_sp'] ?>">Xóa</a>
                                                     </div>
