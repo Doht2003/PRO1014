@@ -46,7 +46,7 @@
                         <input type="hidden" name="tong" value="<?=$order['tong']?>">
                         <td><select  <?=($order['ma_trangthai']==3)?'disabled': ""?> name="trangtdh" class="trangthaidonhang" onchange="trangthai(<?=$count?>,<?=$order['ma_trangthai']?>)">
                             <?php foreach($status as $value) : ?>
-                                <option value="<?=$value['ma_trangthai']?>"<?=($value['ma_trangthai']==$order['ma_trangthai'])?'selected':""?>><?=$value['status']?></option>
+                                <option value="<?=$value['ma_trangthai']?>"<?=($value['ma_trangthai']==$order['ma_trangthai'])?'selected':""?>><?=$value['trangthai']?></option>s
                             <?php endforeach ?>
                         </select></td>
                         <td><button class="btn_donhang" name="btn_capnhat_donhang" type="submit">Cập nhật</button></td>

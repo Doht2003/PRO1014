@@ -1,5 +1,5 @@
 <?php
-function dathang($ma_tk, $ho_ten, $sdt, $email, $dia_chi,$tong)
+function dathang($id_user, $ho_ten, $sdt, $email, $dia_chi,$tong)
 {
     include './controller/controller.php';
     $errors = [];
@@ -31,12 +31,12 @@ function dathang($ma_tk, $ho_ten, $sdt, $email, $dia_chi,$tong)
             foreach ($_SESSION['cart'] as $cart) {
                 $product_id = $cart[0];
                 $quantity = $cart[4];
-                $sql = "INSERT INTO order_detail(ma_donhang,product_id,quantity) VALUES('$last_id','$product_id','$quantity')";
+                $sql = "INSERT INTO order_detail(ma_donhang,ma_sp,so_luong) VALUES('$last_id','$product_id','$quantity')";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
             }
             }
-            $sql = "UPDATE products SET quantity = quantity - '$quantity' WHERE product_id =  '$product_id' ";
+            $sql = "UPDATE sanpham SET so_luong = so_luong - '$quantity' WHERE ma_sp =  '$product_id' ";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
         }

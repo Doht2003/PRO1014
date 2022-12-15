@@ -307,13 +307,13 @@ if (isset($_GET['act'])) {
       break;
     case 'muahang':
       if (isset($_POST['btn_muahang'])) {
-        $hovaten = trim($_POST['hovaten']);
-        $tel = $_POST['tel'];
+        $hovaten = trim($_POST['ho_ten']);
+        $tel = $_POST['sdt'];
         $email = trim($_POST['email']);
-        $dia_chi = trim($_POST['address']);
-        $id_user = $_SESSION['user']['user_id'];
+        $dia_chi = trim($_POST['dia_chi']);
+        $id_user = $_SESSION['user']['ma_tk'];
         $tong = $_POST['tong'];
-        dathang($id_user, $hovaten, $tel, $email, $address, $tong);
+        dathang($id_user, $hovaten, $tel, $email, $dia_chi, $tong);
         if (!isset($_SESSION['errors_muahhang']['hovaten']) && !isset($_SESSION['errors_muahhang']['email']) && !isset($_SESSION['errors_muahhang']['address']) && !isset($_SESSION['errors_muahhang']['tel'])) {
           $_SESSION['dangkythanhcong'] = "Đăng ký thành công";
           header("location: index.php?act=vao_trang_xacnhan_muahang");
