@@ -3,10 +3,23 @@
             if(isset($_SESSION['user'])){
                 header("location: index.php");
             }
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST')
+            {
+                $username = $_POST['username'];
+                $mat_khau = $_POST['mat_khau'];
+                $repassword = $_POST['repassword'];
+                $ho_ten = $_POST['ho_ten'];
+                $email = $_POST['email'];
+                $dia_chi = $_POST['dia_chi'];
+                $sdt = $_POST['sdt'];
+                $avt = $_FILES['avt'];
+                dangky($username, $ho_ten, $mat_khau, $repassword, $email, $dia_chi, $sdt);
+            }
         ?>
         <div class="content">
             <h2 id="dangnhap">Đăng ký</h2>
-            <form action="index.php?act=dangkytk" method="post" enctype="multipart/form-data">
+            <form action="" method="post" enctype="multipart/form-data">
                 <table class="dangky" >
                    
                     <tr>

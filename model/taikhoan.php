@@ -7,21 +7,9 @@
         $account = $stmt->fetch(PDO::FETCH_ASSOC);
         return $account;
     }
-    function dangky($username,$mat_khau,$repassword,$ho_ten,$email,$dia_chi,$sdt,$avt){
+    function dangky($username,$ho_ten,$mat_khau,$repassword,$email,$dia_chi,$sdt){
         include './controller/controller.php';
         $errors = [];
-        if ($file['size'] > 0) {
-            $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-            $ext = strtolower($ext);
-            if ($ext != "png" && $ext != "jpeg" && $ext != "jpg" && $ext != "gif") {
-                $errors['img'] = "Không đúng định dạnh ảnh";
-            } else {
-                $avt = $file['name'];
-            }
-        }
-        else{
-            $errors['img'] = "Ảnh không được để trống";
-        }
         if($username== ""){
             $errors['username'] = "Bạn chưa nhập username";
         }  
@@ -92,18 +80,18 @@
                 $errors['sdt'] = "Số điện thoại đã tồn tại";
             }
         }
-        // $sdt = '/^0[0-9]{8}$/';
-        // if(!preg_match($sdt,$sdt)){
-        //     $errors['sdt'] = "Số điện thoại không đúng định dạng";
-        // }
-        // $_SESSION['errors'] =  $errors;
+        
+        if(!preg_match('/^[0-9]{10}+$/', $sdt)) {
+            $errors['sdt'] = "Số điện thoại không đúng định dạng";
+        }
+
+        $_SESSION['errors'] =  $errors;
        if(! $errors ){
-        $sql = "INSERT INTO taikhoan(username,mat_khau,ho_ten,email,dia_chi,sdt,avt) VALUES ('$username','$mat_khau','$ho_ten','$email','$dia_chi','$sdt','$avt') ";
+        $sql = "INSERT INTO taikhoan(username,mat_khau,ho_ten, vai_tro,email,dia_chi,sdt) VALUES ('$username','$mat_khau','$ho_ten', 2,'$email','$dia_chi','$sdt') ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        move_uploaded_file($file['tmp_name'], './view/img/' . $avt);
        }
-        
+        // header("location: /index.php?act=vao_trang_dangnhap");
     }
     function quenmatkhau($email,$username){
         include './controller/controller.php';
@@ -137,7 +125,7 @@
     }
     function show_user(){
         include '../controller/controller.php';
-        $sql = "SELECT ma_tk,mat_khau,email,ho_ten,sdt,avt,dia_chi,username,vai_tro.ma_vt,vai_tro.ten_vt FROM taikhoan JOIN vai_tro ON vai_tro.ma_vt=taikhoan.vai_tro  ";
+        $sql = "SELECT ma_tk,mat_khau,email,ho_ten,sdt,avt,dia_chi,username,vai_tro.ma_vt,vai_tro.ten_vt FROM taikhoan LEFT JOIN vai_tro ON vai_tro.ma_vt=taikhoan.vai_tro  ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -230,6 +218,12 @@
         if($sdt == ""){
             $errors['sdt'] = "Số điện thoại không được để trống";
         }
+          
+        if(!preg_match('/^[0-9]{10}+$/', $sdt)) {
+            $errors['sdt'] = "Số điện thoại không đúng định dạng";
+        }
+
+        $_SESSION['errors'] =  $errors;
         // $sdt = '/^0[0-9]{8}$/';
         // if(!preg_match('/^0[0-9]{8}$/',$sdt)){
         //     $errors['sdt'] = "Số điện thoại không đúng định dạng";
@@ -346,11 +340,10 @@
         if($sdt == ""){
             $errors['sdt'] = "Số điện thoại không được để trống";
         }
-        // $sdt = '/^0[0-9]{8}$/';
-        // if(!preg_match($sdt,$sdt)){
-        //     $errors['sdt'] = "Số điện thoại không đúng định dạng";
+        // if(!preg_match('/^[0-9]{10}+$/', $sdt)) {
+        //     $errors['sdt'] = "Số điện thoại không được để trống";
         // }
-        $_SESSION['errors'] =  $errors;
+        // $_SESSION['errors'] =  $errors;
        if(! $errors ){
         $sql = " UPDATE taikhoan set ho_ten = '$ho_ten', email='$email',dia_chi='$dia_chi',sdt='$sdt', img='$img' WHERE ma_tk = '$ma_tk'  ";
         $stmt = $conn->prepare($sql);

@@ -120,6 +120,7 @@ if (isset($_GET['act'])) {
       $_SESSION['thongbao'] = " ";
       break;
     case 'vao_trang_dangky':
+      var_dump($_POST);
       include_once './view/user/sign_up.php';
       break;
     case 'dangnhap':
@@ -306,18 +307,21 @@ if (isset($_GET['act'])) {
       include "./view/user/cart.php";
       break;
     case 'muahang':
+      print_r($_SESSION);
       if (isset($_POST['btn_muahang'])) {
         $hovaten = trim($_POST['ho_ten']);
         $tel = $_POST['sdt'];
         $email = trim($_POST['email']);
         $dia_chi = trim($_POST['dia_chi']);
         $id_user = $_SESSION['user']['ma_tk'];
-        $tong = $_POST['tong'];
-        dathang($id_user, $hovaten, $tel, $email, $dia_chi, $tong);
-        if (!isset($_SESSION['errors_muahhang']['hovaten']) && !isset($_SESSION['errors_muahhang']['email']) && !isset($_SESSION['errors_muahhang']['address']) && !isset($_SESSION['errors_muahhang']['tel'])) {
+        $tong = (int) $_POST['tong'];
+        $errors = dathang($id_user, $hovaten, $tel, $email, $dia_chi, $tong);
+        if (empty($errors)) {
           $_SESSION['dangkythanhcong'] = "Đăng ký thành công";
+          // var_dump($_POST);
           header("location: index.php?act=vao_trang_xacnhan_muahang");
         } else {
+          // var_dump($_POST);
           header("location: index.php?act=vao_trang_xacnhan_muahang");
         }
       }
